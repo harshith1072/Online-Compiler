@@ -22,6 +22,7 @@ app.post("/run", async (req, res) => {
 
   try {
     const filePath = await generateFile(language, code);
+    
     const inputFilePath = await generateInputFile(input);
     const output = await executeCode(language, filePath, inputFilePath);
     res.json({ filePath, inputFilePath, output });
