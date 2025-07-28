@@ -32,18 +32,7 @@ const executeCode = async (language, filePath, inputFilePath = null) => {
         ? `"${outFile}" < "${inputFilePath}"`
         : `"${outFile}"`;
       break;
-
-//     case "js":
-//       runCmd = inputFilePath
-//         ? `node "${filePath}" < "${inputFilePath}"`
-//         : `node "${filePath}"`;
-//       break;
-
-//     case "py":
-//      runCmd = inputFilePath
-//   ? `python3 "${filePath}" < "${inputFilePath}"`
-//   : `python3 "${filePath}"`;
-// break;
+ 
  case "js":
       outFile = path.join(outputPath, `${fileNameWithoutExt}-${jobID}.js`);
       fs.copyFileSync(filePath, outFile);
