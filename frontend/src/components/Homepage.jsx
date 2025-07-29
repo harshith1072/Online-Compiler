@@ -1,7 +1,7 @@
 // Homepage.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Footer from './Footer'; // Assuming you're using the simpler footer now
+import Footer from './Footer'; 
 import Navbar from './Navbar';
 const Homepage = () => {
   return (
