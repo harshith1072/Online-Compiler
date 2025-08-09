@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import "../Styles/Signup.css";
 import { useNavigate } from "react-router-dom";
-import Navbar from "./Navbar";
+import { FiArrowLeft } from "react-icons/fi";
 import axios from "axios";
 import config from "./config";
 import Spinner from "./Spinner";
@@ -18,25 +17,7 @@ function Signup() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleNameChange = (e) => {
-    setName(e.target.value);
-  };
-
-  const handleRollNoChange = (e) => {
-    setRollNo(e.target.value);
-  };
-
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const handleConfirmPasswordChange = (e) => {
-    setConfirmPassword(e.target.value);
-  };
+  
 
   const handleSignUp = async (e) => {
     e.preventDefault();
@@ -44,6 +25,7 @@ function Signup() {
 
     if (password !== confirmPassword) {
       alert("Passwords do not match");
+      setLoading(false);
       return;
     }
 
@@ -56,10 +38,8 @@ function Signup() {
 
     try {
       const res = await axios.post(`${SERVER_URL}/signup`, data);
-
       if (res.status === 201) {
         alert("Successfully registered, proceed to login!");
-        setLoading(false);
         navigate("/login");
       } else {
         alert("Registration failed. Please try again.");
@@ -68,91 +48,151 @@ function Signup() {
       if (error.response && error.response.status === 409) {
         alert("Email already exists. Please use a different email.");
       } else {
-        console.error(
-          "Error during signup:",
-          error.response ? error.response.data : error.message
-        );
         alert("An error occurred during signup. Please try again.");
+        console.error("Signup error:", error);
       }
     } finally {
-      setLoading(false);  
+      setLoading(false);
     }
   };
 
   return (
-    <>
-      <Navbar />
-      <div className="card signup-card">
-        <h2>Sign Up</h2>
+    <div style={styles.page}>
+      <div
+        style={styles.backIcon}
+        onClick={() => navigate("/")}
+        title="Go Back"
+      >
+        <FiArrowLeft size={24} />
+      </div>
+      <div style={styles.card}>
+        <h2 style={styles.title}>Create Account</h2>
         <form onSubmit={handleSignUp}>
-          <div className="form-group">
-            <label htmlFor="name">Name:</label>
+          <div style={styles.formGroup}>
+            <label style={styles.label}>Name</label>
             <input
               type="text"
-              id="name"
-              name="name"
               value={name}
-              onChange={handleNameChange}
+              onChange={(e) => setName(e.target.value)}
+              style={styles.input}
               required
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="name">Roll No:</label>
+          <div style={styles.formGroup}>
+            <label style={styles.label}>Roll No</label>
             <input
               type="text"
-              id="rollno"
-              name="rollno"
               value={rollno}
-              onChange={handleRollNoChange}
+              onChange={(e) => setRollNo(e.target.value)}
+              style={styles.input}
               required
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="email">Email:</label>
+          <div style={styles.formGroup}>
+            <label style={styles.label}>Email</label>
             <input
               type="email"
-              id="email"
-              name="email"
               value={email}
-              onChange={handleEmailChange}
+              onChange={(e) => setEmail(e.target.value)}
+              style={styles.input}
               required
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="password">Password:</label>
+          <div style={styles.formGroup}>
+            <label style={styles.label}>Password</label>
             <input
               type="password"
-              id="password"
-              name="password"
               value={password}
-              onChange={handlePasswordChange}
+              onChange={(e) => setPassword(e.target.value)}
+              style={styles.input}
               required
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="confirmPassword">Confirm Password:</label>
+          <div style={styles.formGroup}>
+            <label style={styles.label}>Confirm Password</label>
             <input
               type="password"
-              id="confirmPassword"
-              name="confirmPassword"
               value={confirmPassword}
-              onChange={handleConfirmPasswordChange}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              style={styles.input}
               required
             />
           </div>
-          <button
-            className="submit-button"
-            type="submit"
-            onClick={handleSignUp}
-            disabled={loading}
-          >
-            {loading ? <Spinner /> : "Sign Up"}{" "}
-            {/* Show Spinner component when loading */}
+          <button type="submit" style={styles.button} disabled={loading}>
+            {loading ? <Spinner /> : "Sign Up"}
           </button>
         </form>
       </div>
-    </>
+    </div>
   );
 }
+
+const styles = {
+  page: {
+    minHeight: "100vh",
+    background: "linear-gradient(to bottom right, #f0f4f8, #e1f5fe)",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    position: "relative",
+    padding: "2rem",
+  },
+  backIcon: {
+    position: "absolute",
+    top: 30,
+    left: 30,
+    cursor: "pointer",
+    color: "#555",
+    transition: "transform 0.2s ease",
+  },
+  card: {
+    width: "100%",
+    maxWidth: "480px",
+    background: "rgba(255, 255, 255, 0.95)",
+    padding: "50px 40px",
+    borderRadius: "14px",
+    boxShadow: "0 10px 35px rgba(0, 0, 0, 0.1)",
+    textAlign: "center",
+    backdropFilter: "blur(10px)",
+  },
+  title: {
+    fontSize: "28px",
+    fontWeight: "600",
+    color: "#3f51b5",
+    marginBottom: "30px",
+  },
+  formGroup: {
+    marginBottom: "20px",
+    textAlign: "left",
+  },
+  label: {
+    display: "block",
+    marginBottom: "8px",
+    fontWeight: "500",
+    color: "#333",
+  },
+  input: {
+    width: "100%",
+    padding: "12px 14px",
+    borderRadius: "8px",
+    border: "1px solid #ccc",
+    fontSize: "14px",
+    backgroundColor: "#f9f9f9",
+    outline: "none",
+    transition: "border 0.3s",
+  },
+  button: {
+    width: "100%",
+    padding: "14px",
+    fontSize: "17px",
+    fontWeight: "600",
+    border: "none",
+    borderRadius: "8px",
+    backgroundColor: "#4caf50",
+    color: "#fff",
+    cursor: "pointer",
+    transition: "background-color 0.3s, transform 0.2s",
+  },
+};
 
 export default Signup;

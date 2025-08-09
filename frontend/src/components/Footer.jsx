@@ -35,8 +35,8 @@ const Footer = () => {
 
         {/* Brand/Copyright Section */}
         <div className="mb-4 md:mb-0">
-          <h3 className="text-xl font-bold text-blue-400 mb-1">Online Judge</h3>
-          <p className="text-sm">&copy; {new Date().getFullYear()} Online Judge. All rights reserved.</p>
+          <h3 className="text-xl font-bold text-blue-400 mb-1">CodeJudge</h3>
+          <p className="text-sm">&copy; {new Date().getFullYear()}CodeJudge. All rights reserved.</p>
         </div>
 
         {/* Made By Section */}
@@ -44,7 +44,7 @@ const Footer = () => {
           <p className="text-sm">
             Crafted with &hearts; by{' '}
             <a
-              href="https://github.com/HarshithMateti" // Replace with your actual GitHub or portfolio link
+              href="https://github.com/harshith1072"  
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-400 hover:text-blue-300 transition-colors duration-200 font-medium"

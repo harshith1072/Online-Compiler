@@ -1,0 +1,19 @@
+.main-container {
+  display: flex;
+  gap: 1.5rem;
+  padding: 2rem;
+  align-items: flex-start;
+}
+
+/* LEFT SECTION (problem, test cases) */
+.left-section {
+  flex: 1;
+  max-width: 40%;
+  overflow-y: auto;
+}
+
+/* RIGHT SECTION (code editor) */
+.right-section {
+  flex: 1;
+  max-width: 60%;
+}

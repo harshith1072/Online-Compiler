@@ -1,0 +1,197 @@
+/* General layout and background */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  height: 100vh;
+  background-color: #f0f2f5; /* A light, modern background */
+}
+
+/* Container for the right side, using flexbox for vertical alignment */
+.right-side-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* Takes up the rest of the available horizontal space */
+  padding: 20px;
+}
+
+/* Header section (Language selector and buttons) */
+.header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 15px;
+  padding: 10px 0;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.language-select label {
+  font-weight: bold;
+  color: #333;
+}
+
+.language-select select {
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.editorial-btn,
+.reset-btn {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.editorial-btn {
+  background-color: #28a745;
+}
+
+.editorial-btn:hover {
+  background-color: #218838;
+}
+
+.reset-btn {
+  background-color: #dc3545;
+}
+
+/* Monaco Editor section, now taking up most of the vertical space */
+.monaco-editor-container {
+  flex-grow: 1; /* This is the key change: it takes up the maximum available space */
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.monaco-editor {
+  flex-grow: 1;
+  width: 100%;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+  gap: 10px;
+  background-color: #fff;
+  border-top: 1px solid #ddd;
+}
+
+.run-btn,
+.submit-btn {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.run-btn {
+  background-color: #17a2b8;
+}
+
+.run-btn:hover {
+  background-color: #138496;
+}
+
+.submit-btn {
+  background-color: #007bff;
+}
+
+.submit-btn:hover {
+  background-color: #0069d9;
+}
+
+/* Output and custom test cases section */
+.output-container,
+.test-case-form {
+  margin-top: 0;
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.output-title {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+}
+
+.output-container p {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: 'Courier New', Courier, monospace;
+  color: #555;
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.test-case-form h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+.test-case-form div {
+  margin-bottom: 15px;
+}
+
+.test-case-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.test-case-form textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-family: 'Courier New', Courier, monospace;
+  box-sizing: border-box;
+}
+
+.test-case-form button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  background-color: #6c757d;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.test-case-form button:hover {
+  background-color: #5a6268;
+}
+.monaco-editor {
+  /* ... other styles ... */
+  height: 67vh; /* This will make the editor take up the full viewport height */
+}

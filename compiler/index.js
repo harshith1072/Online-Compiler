@@ -5,6 +5,8 @@ const cors = require("cors");
 const { generateInputFile } = require("./generateInputFile.js");
 const { executeCode } = require("./executeCode");
 const {aiCodeReview}=require("./aiCodeReview")
+const { verdict } = require("./verdict");
+ 
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -12,8 +14,97 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.json({ online: "compiler" });
 });
+ 
+ 
+// app.post("/run", async (req, res) => {
+//   const { language, code, input, problemId } = req.body;
+
+//   if (!code) {
+//     return res.status(200).json({ success: false, error: "Empty code!" });
+//   }
+
+//   try {
+//     const filePath = await generateFile(language, code);
+//     const inputFilePath = await generateInputFile(input);
+//     const output = await executeCode(language, filePath, inputFilePath);
+ 
+//     const verdictResult = await verdict(problemId, async (input) => {
+//   const testFilePath = await generateFile(language, code);  
+//   const customInputPath = await generateInputFile(input);
+//   return await executeCode(language, testFilePath, customInputPath);
+// });
+
+
+//     // res.json({ filePath, inputFilePath, output, verdict: verdictResult });
+// res.json({ 
+//   filePath, 
+//   inputFilePath, 
+//   output: verdictResult.details?.[0]?.actual || output,  // use output of 1st test case
+//   verdict: verdictResult.verdict 
+// });
+
+
+
+//   } catch (error) {
+//     res.status(500).json({ error: error.message });
+//   }
+// });
+
 
 app.post("/run", async (req, res) => {
+  const { language, code, input, problemId, isRun } = req.body;
+
+  if (!code) {
+    return res.status(200).json({ success: false, error: "Empty code!" });
+  }
+
+ 
+
+try {
+  const filePath = await generateFile(language, code);
+  const inputFilePath = await generateInputFile(input);
+  const rawOutput = await executeCode(language, filePath, inputFilePath);
+
+  const resultLog = await verdict(problemId, async (input) => {
+    const testFilePath = await generateFile(language, code);
+    const customInputPath = await generateInputFile(input);
+    return await executeCode(language, testFilePath, customInputPath);
+  }, isRun); 
+
+  return res.json({ 
+    output: resultLog,          // Show resultLog in frontend output
+    verdict: "click on submit"  // Keep static or handle separately
+  });
+} catch (error) {
+  console.log(error);
+  res.status(500).json({ error: error.message });
+}
+
+
+
+});
+
+app.post("/custom", async (req, res) => {
+  const { language, code, input } = req.body;
+
+  if (!code) {
+    return res.status(400).json({ success: false, error: "Code is empty!" });
+  }
+
+  try {
+    const filePath = await generateFile(language, code);
+    const inputFilePath = await generateInputFile(input);
+    const output = await executeCode(language, filePath, inputFilePath);
+
+    return res.json({ success: true, output });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+
+app.post("/run1", async (req, res) => {
   const { language, code, input } = req.body;
 
   if (!code) {
@@ -30,6 +121,7 @@ app.post("/run", async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
 
 app.post("/ai-review", async (req, res) => {
     const { code } = req.body;

@@ -1,0 +1,84 @@
+ 
+body, html {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+#root {
+  flex: 1;
+}
+
+/* Main container */
+.container-problem-list {
+  max-width: 1300px;
+  margin: 40px auto;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Title */
+.title h1 {
+  font-size: 2.2rem;
+  color: #333;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* List wrapper */
+.problem-items {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Link styling */
+.problem-items li a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+}
+
+/* Item common style */
+.problem-items li {
+  padding: 18px 30px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: 0.3s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Difficulty levels */
+.easy {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+.easy:hover {
+  background-color: #c8e6c9;
+}
+
+.medium {
+  background-color: #fff8e1;
+  color: #ff8f00;
+}
+.medium:hover {
+  background-color: #ffecb3;
+}
+
+.hard {
+  background-color: #ffebee;
+  color: #c62828;
+}
+.hard:hover {
+  background-color: #ffcdd2;
+}
