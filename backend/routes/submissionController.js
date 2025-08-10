@@ -26,26 +26,80 @@ exports.getSubmissionById = async (req, res) => {
 };
 
 // Create a new submission
+// exports.createSubmission = async (req, res) => {
+//   const { user_id, problem_id, submission_code, language, status, result } =
+//     req.body;
+
+//   const newSubmission = new Submission({
+//     user_id,
+//     problem_id,
+//     submission_code,
+//     language,
+//     status,
+//     result,
+//   });
+
+//   try {
+//     const savedSubmission = await newSubmission.save();
+//     res.status(201).json(savedSubmission);
+//   } catch (error) {
+//     res.status(400).json({ message: error.message });
+//   }
+// };
+
+
+// exports.createSubmission = async (req, res) => {
+//   try {
+//     const { problem_id, submission_code, language, status, result } = req.body;
+
+//     const newSubmission = new Submission({
+//       user_id: req.user._id, // ✅ taken from JWT, not body
+//       problem_id,
+//       submission_code,
+//       language,
+//       status,
+//       result,
+//     });
+// console.log("hello");
+//     const savedSubmission = await newSubmission.save();
+//     res.status(201).json(savedSubmission);
+//   } catch (error) {
+//     res.status(400).json({ message: error.message });
+//   }
+// };
 exports.createSubmission = async (req, res) => {
-  const { user_id, problem_id, submission_code, language, status, result } =
-    req.body;
-
-  const newSubmission = new Submission({
-    user_id,
-    problem_id,
-    submission_code,
-    language,
-    status,
-    result,
-  });
-
   try {
+    const { problem_id, submission_code, language, status, result } = req.body;
+    console.log("Received submission payload:", req.body); // Check what's coming from the frontend
+
+    const newSubmission = new Submission({
+      user_id: req.user._id,
+      problem_id,
+      submission_code,
+      language,
+      status,
+      result,
+    });
+
     const savedSubmission = await newSubmission.save();
     res.status(201).json(savedSubmission);
   } catch (error) {
+    
+    console.error("Mongoose Validation Error:", error.message);
     res.status(400).json({ message: error.message });
   }
 };
+
+
+
+
+
+
+
+
+
+
+
 
 // Update an existing submission
 exports.updateSubmission = async (req, res) => {

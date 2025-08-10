@@ -24,30 +24,30 @@ const TestCasesComponent = (props) => {
     ],
     output: [-1],
   },
-  {
-    id: 3,
-    inputs: [
-      { name: "Nums", value: [1] },
-      { name: "Target", value: [1] },
-    ],
-    output: [0],
-  },
-  {
-    id: 4,
-    inputs: [
-      { name: "Nums", value: [10, 20, 30, 40, 50] },
-      { name: "Target", value: [30] },
-    ],
-    output: [2],
-  },
-  {
-    id: 5,
-    inputs: [
-      { name: "Nums", value: [1, 3, 5, 7, 9, 11] },
-      { name: "Target", value: [4] },
-    ],
-    output: [-1],
-  },
+  // {
+  //   id: 3,
+  //   inputs: [
+  //     { name: "Nums", value: [1] },
+  //     { name: "Target", value: [1] },
+  //   ],
+  //   output: [0],
+  // },
+  // {
+  //   id: 4,
+  //   inputs: [
+  //     { name: "Nums", value: [10, 20, 30, 40, 50] },
+  //     { name: "Target", value: [30] },
+  //   ],
+  //   output: [2],
+  // },
+  // {
+  //   id: 5,
+  //   inputs: [
+  //     { name: "Nums", value: [1, 3, 5, 7, 9, 11] },
+  //     { name: "Target", value: [4] },
+  //   ],
+  //   output: [-1],
+  // },
 ],
 //2
 
@@ -289,21 +289,21 @@ const TestCasesComponent = (props) => {
     inputs: [{ name: "nums", value: [1, 2, 3, 1] }],
     output: [4],
   },
-  {
-    id: 3,
-    inputs: [{ name: "nums", value: [1, 2, 3] }],
-    output: [3],
-  },
-  {
-    id: 4,
-    inputs: [{ name: "nums", value: [0] }],
-    output: [0],
-  },
-  {
-    id: 5,
-    inputs: [{ name: "nums", value: [100, 1, 1, 100] }],
-    output: [200],
-  },
+  // {
+  //   id: 3,
+  //   inputs: [{ name: "nums", value: [1, 2, 3] }],
+  //   output: [3],
+  // },
+  // {
+  //   id: 4,
+  //   inputs: [{ name: "nums", value: [0] }],
+  //   output: [0],
+  // },
+  // {
+  //   id: 5,
+  //   inputs: [{ name: "nums", value: [100, 1, 1, 100] }],
+  //   output: [200],
+  // },
 ],
 
 //jumpgame
@@ -323,27 +323,27 @@ const TestCasesComponent = (props) => {
     ],
     output: ["2"],
   },
-  {
-    id: 3,
-    inputs: [
-      { name: "nums", value: ["[1,2,3]"] }
-    ],
-    output: ["2"],
-  },
-  {
-    id: 4,
-    inputs: [
-      { name: "nums", value: ["[5,9,3,2,1,0,2,3,3,1,0,0]"] }
-    ],
-    output: ["3"],
-  },
-  {
-    id: 5,
-    inputs: [
-      { name: "nums", value: ["[1,1,1,1,1]"] }
-    ],
-    output: ["4"],
-  },
+  // {
+  //   id: 3,
+  //   inputs: [
+  //     { name: "nums", value: ["[1,2,3]"] }
+  //   ],
+  //   output: ["2"],
+  // },
+  // {
+  //   id: 4,
+  //   inputs: [
+  //     { name: "nums", value: ["[5,9,3,2,1,0,2,3,3,1,0,0]"] }
+  //   ],
+  //   output: ["3"],
+  // },
+  // {
+  //   id: 5,
+  //   inputs: [
+  //     { name: "nums", value: ["[1,1,1,1,1]"] }
+  //   ],
+  //   output: ["4"],
+  // },
 ],
 
 
@@ -370,33 +370,33 @@ const TestCasesComponent = (props) => {
     ],
     output: ["-1"],
   },
-  {
-    id: 3,
-    inputs: [
-      { name: "bloomDay", value: ["[7,7,7,7,12,7,7]"] },
-      { name: "m", value: ["2"] },
-      { name: "k", value: ["3"] },
-    ],
-    output: ["12"],
-  },
-  {
-    id: 4,
-    inputs: [
-      { name: "bloomDay", value: ["[1000000000,1000000000]"] },
-      { name: "m", value: ["1"] },
-      { name: "k", value: ["2"] },
-    ],
-    output: ["1000000000"],
-  },
-  {
-    id: 5,
-    inputs: [
-      { name: "bloomDay", value: ["[1,10,2,9,3,8,4,7,5,6]"] },
-      { name: "m", value: ["4"] },
-      { name: "k", value: ["2"] },
-    ],
-    output: ["9"],
-  },
+  // {
+  //   id: 3,
+  //   inputs: [
+  //     { name: "bloomDay", value: ["[7,7,7,7,12,7,7]"] },
+  //     { name: "m", value: ["2"] },
+  //     { name: "k", value: ["3"] },
+  //   ],
+  //   output: ["12"],
+  // },
+  // {
+  //   id: 4,
+  //   inputs: [
+  //     { name: "bloomDay", value: ["[1000000000,1000000000]"] },
+  //     { name: "m", value: ["1"] },
+  //     { name: "k", value: ["2"] },
+  //   ],
+  //   output: ["1000000000"],
+  // },
+  // {
+  //   id: 5,
+  //   inputs: [
+  //     { name: "bloomDay", value: ["[1,10,2,9,3,8,4,7,5,6]"] },
+  //     { name: "m", value: ["4"] },
+  //     { name: "k", value: ["2"] },
+  //   ],
+  //   output: ["9"],
+  // },
 ],
 
 
@@ -469,30 +469,30 @@ const TestCasesComponent = (props) => {
     ],
     output: ["2"]
   },
-  {
-    id: 3,
-    inputs: [
-      { name: "nums", value: ["[3,4,7,2,-3,1,4,2]"] },
-      { name: "k", value: ["7"] }
-    ],
-    output: ["4"]
-  },
-  {
-    id: 4,
-    inputs: [
-      { name: "nums", value: ["[1,-1,0]"] },
-      { name: "k", value: ["0"] }
-    ],
-    output: ["3"]
-  },
-  {
-    id: 5,
-    inputs: [
-      { name: "nums", value: ["[0,0,0,0,0,0,0,0,0,0]"] },
-      { name: "k", value: ["0"] }
-    ],
-    output: ["55"]
-  }
+  // {
+  //   id: 3,
+  //   inputs: [
+  //     { name: "nums", value: ["[3,4,7,2,-3,1,4,2]"] },
+  //     { name: "k", value: ["7"] }
+  //   ],
+  //   output: ["4"]
+  // },
+  // {
+  //   id: 4,
+  //   inputs: [
+  //     { name: "nums", value: ["[1,-1,0]"] },
+  //     { name: "k", value: ["0"] }
+  //   ],
+  //   output: ["3"]
+  // },
+  // {
+  //   id: 5,
+  //   inputs: [
+  //     { name: "nums", value: ["[0,0,0,0,0,0,0,0,0,0]"] },
+  //     { name: "k", value: ["0"] }
+  //   ],
+  //   output: ["55"]
+  // }
 ],
 
 

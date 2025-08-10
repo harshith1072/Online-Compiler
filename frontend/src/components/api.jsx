@@ -1,4 +1,4 @@
-//Connecting the backend with the frontend 
+ 
 
 import axios from 'axios'
 

@@ -1,4 +1,4 @@
-// config.js
+ 
 
 const SERVER_URL = "http://localhost:9000";
  

@@ -3,8 +3,7 @@ import { useParams } from "react-router-dom";
 import TestCasesComponent from "./TestCasesComponent";
 // import Navbar from "./Navbar";
 import Editor from "./Editor";
-// import CodeEditor from "./CodeEditor"
-// import Footer from "./Footer";
+ 
 import "../Styles/FetchSingleProblem.css";
 
 const problems = [
@@ -713,25 +712,8 @@ const problems = [
 
 ];
 
-// const FetchSingleProblem = () => {
-//   const { id } = useParams();
-  
-//   return (
-//     <div>
-//       {/* <Navbar /> */}
-//       <div className="app">
-//         <div className="question-section">
-//           {!id ? problems[0] : problems[id]}
-//           <TestCasesComponent index={id} />
-//         </div>
-//         <div className="editor-section">
-//           <Editor />
-//         </div>
-//       </div>
-//       <Footer />
-//     </div>
-//   );
-// };
+ 
+ 
 const FetchSingleProblem = () => {
   const { id } = useParams();
   const problemIndex = Number(id) || 0;

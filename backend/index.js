@@ -62,6 +62,8 @@
  router.get("/submissions", submissionController.getAllSubmissions);
  router.get("/submissions/:id", submissionController.getSubmissionById);
  router.post("/submissions", submissionController.createSubmission);
+router.post("/", requireAuth, submissionController.createSubmission);
+
  router.put("/submissions/:id", submissionController.updateSubmission);
  router.delete("/submissions/:id", submissionController.deleteSubmission);
   

@@ -3,6 +3,7 @@
   gap: 1.5rem;
   padding: 2rem;
   align-items: flex-start;
+  flex-wrap: wrap; /* allows sections to stack if small screen */
 }
 
 /* LEFT SECTION (problem, test cases) */
@@ -10,7 +11,9 @@
   flex: 1;
   max-width: 40%;
   overflow-y: auto;
+  height: calc(100vh - 4rem); /* fills screen and allows scroll */
 }
+
 
 /* RIGHT SECTION (code editor) */
 .right-section {
