@@ -153,25 +153,86 @@ const handleRun = async () => {
 
 
 
-  const handleSubmit = async () => {
-    console.log(id);
-    const payload = {
-      language: selectedLanguage,
-      code: code,
-      input: input,
-      problemId: parseInt(id, 10) + 1,
-    };
-    try {
-      const { data } = await axios.post(`${COMPILER_URL}/run`, payload);
-      console.log(data);
-      setOutput(data.output);
-      setVerdict(data.verdict);
+  // const handleSubmit = async () => {
+  //   console.log(id);
+  //   const payload = {
+  //     language: selectedLanguage,
+  //     code: code,
+  //     input: input,
+  //     problemId: parseInt(id, 10) + 1,
+  //   };
+  //   try {
+  //     const { data } = await axios.post(`${COMPILER_URL}/run`, payload);
+  //     console.log(data);
+  //     setOutput(data.output);
+     
  
-      console.log(verdict);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  //     console.log(verdict);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+
+const handleSubmit = async () => {
+     console.log(id);
+
+  const payload = {
+     language: selectedLanguage,
+     code: code,
+     input: input,
+     problemId: parseInt(id, 10) + 1,
+    };
+
+ try {
+  // Step 1: Run code
+   const { data } = await axios.post(`${COMPILER_URL}/run`, payload);
+   //  const { data } = await axios.post(`${COMPILER_URL}/run`, runPayload );
+ //   console.log(data);
+
+    setOutput(data.output);
+
+    // Step 2: Prepare submission payload
+    const submissionPayload = {
+      problem_id: parseInt(id, 10) + 1,
+      submission_code: code,
+      language: selectedLanguage,
+      status:
+        data.output?.trim() === "Accepted ✅ All test cases passed"
+          ? "accepted"
+          : "rejected",
+      result: data.output,
+    };
+ 
+
+    // Step 3: Send submission to backend
+    await axios.post(
+      "http://localhost:9000/submissions",
+      submissionPayload,
+      { withCredentials: true }
+    );
+
+    console.log("Submission saved successfully");
+  } catch (error) {
+    console.error("Error during submission:", error);
+    setOutput("Error during submission",error);
+  }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   const handleEditorial = () => {
     navigate(`/editorial/${id}`);

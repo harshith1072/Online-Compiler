@@ -48,32 +48,20 @@ exports.getSubmissionById = async (req, res) => {
 // };
 
 
-// exports.createSubmission = async (req, res) => {
-//   try {
-//     const { problem_id, submission_code, language, status, result } = req.body;
-
-//     const newSubmission = new Submission({
-//       user_id: req.user._id, // ✅ taken from JWT, not body
-//       problem_id,
-//       submission_code,
-//       language,
-//       status,
-//       result,
-//     });
-// console.log("hello");
-//     const savedSubmission = await newSubmission.save();
-//     res.status(201).json(savedSubmission);
-//   } catch (error) {
-//     res.status(400).json({ message: error.message });
-//   }
-// };
+ 
+ 
 exports.createSubmission = async (req, res) => {
   try {
     const { problem_id, submission_code, language, status, result } = req.body;
-    console.log("Received submission payload:", req.body); // Check what's coming from the frontend
+    
+    
+    console.log("Received submission payload:", req.body);
+    
+ 
+    console.log("User ID from middleware:", req.user._id);
 
     const newSubmission = new Submission({
-      user_id: req.user._id,
+      user_id: req.user._id, 
       problem_id,
       submission_code,
       language,
@@ -89,6 +77,9 @@ exports.createSubmission = async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 };
+
+
+
 
 
 

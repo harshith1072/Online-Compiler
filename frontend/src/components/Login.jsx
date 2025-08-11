@@ -3,42 +3,58 @@ import { useNavigate } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import instance from './api';
+import api from './api';  
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+const navigate = useNavigate();
 
-  const handleLoginSuccess = () => toast.success('Successfully logged in');
-  const handleLoginError = () => toast.error('Invalid credentials, please try again.');
-  const redirectToHomepage = () => navigate('/');
+  const handleLoginSuccess = () => toast.success('Successfully logged in');
+  const handleLoginError = () => toast.error('Invalid credentials, please try again.');
+  const redirectToHomepage = () => navigate('/');
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsLoading(true);
- 
-try {
-  const response = await instance.post('/login', { email, password });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+ 
+    try {
+        const response = await api.post('/login', { email, password });
 
-  if (response.data.token) {
-    localStorage.setItem('token', response.data.token);
-    navigate('/problems');
-    handleLoginSuccess();
-  } else {
-    handleLoginError();
-  }
-} catch (error) {
-  console.error(error);
-  handleLoginError();
-} finally {
+        // ✅ Check for a successful status code instead of a token
+        if (response.status === 200) {
+            navigate('/problems');
+            handleLoginSuccess();
+        } else {
+            handleLoginError();
+        }
+    } catch (error) {
+        console.error(error);
+        // ✅ Check for a 401 status to provide specific feedback
+        if (error.response && error.response.status === 401) {
+            handleLoginError();
+        } else {
+            toast.error('An unexpected error occurred. Please try again.');
+        }
+    }
+
+
+
+
+finally {
   setIsLoading(false);
 }
 
  
 
   };
+
+
+
+
+
+
 
   return (
     <div style={styles.page}>
