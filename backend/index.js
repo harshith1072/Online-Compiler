@@ -233,12 +233,13 @@ app.delete("/testcases/:id", testCaseController.deleteTestCase);
 app.get("/byProblem/:problemId", testCaseController.getTestCasesByProblemId);
 
 // ---------- SUBMISSION ROUTES ----------
+app.get("/submissions/user", requireAuth, submissionController.getUserSubmissions);
+
 app.get("/submissions", submissionController.getAllSubmissions);
 app.get("/submissions/:id", submissionController.getSubmissionById);
 app.post("/submissions", requireAuth, submissionController.createSubmission);
 app.put("/submissions/:id", submissionController.updateSubmission);
 app.delete("/submissions/:id", submissionController.deleteSubmission);
-
 // Error handler
 app.use(errorHandler);
 

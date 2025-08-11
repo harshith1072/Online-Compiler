@@ -1,0 +1,63 @@
+.submission-detail-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+.submission-detail-container h1 {
+    font-size: 2rem;
+    color: #1a202c;
+    font-weight: 600;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 10px;
+}
+
+.submission-metadata {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-size: 0.95rem;
+    color: #4a5568;
+    margin-bottom: 30px;
+}
+
+.submission-metadata p {
+    margin: 0;
+}
+
+.submission-status.accepted {
+    color: #2e7d32;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.submission-status.rejected {
+    color: #c62828;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.submission-code h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a202c;
+    margin-bottom: 15px;
+}
+
+/* Style for the code block */
+.submission-code pre {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: auto;
+}
+
+.submission-code code {
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}

@@ -1,0 +1,168 @@
+.submissions-page-container {
+    max-width: 1300px;
+    margin: 40px auto;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.submissions-header h1 {
+    font-size: 2.2rem;
+    color: #333;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.submissions-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.submission-item {
+    padding: 18px 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: 0.3s;
+}
+
+.submission-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.submission-item.accepted {
+    background-color: #e8f5e9;
+    border-left: 5px solid #2e7d32;
+}
+
+.submission-item.rejected {
+    background-color: #ffebee;
+    border-left: 5px solid #c62828;
+}
+
+.submission-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.submission-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.submission-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.submission-status {
+    text-transform: capitalize;
+    font-weight: bold;
+}
+
+
+
+.submissions-page-container {
+    max-width: 1300px;
+    margin: 40px auto;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.submissions-header h1 {
+    font-size: 2.2rem;
+    color: #333;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.submissions-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.submission-item {
+    display: flex; /* ✅ Added flexbox to align content and button */
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: 0.3s;
+}
+
+.submission-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.submission-item.accepted {
+    background-color: #e8f5e9;
+    border-left: 5px solid #2e7d32;
+}
+
+.submission-item.rejected {
+    background-color: #ffebee;
+    border-left: 5px solid #c62828;
+}
+
+.submission-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.submission-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.submission-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.submission-status {
+    text-transform: capitalize;
+    font-weight: bold;
+}
+
+/* ✅ New styles for the delete button */
+.delete-button {
+    background-color: transparent;
+    border: none;
+    color: #c62828; /* Red color for delete action */
+    cursor: pointer;
+    margin-left: 20px; /* Spacing from the submission details */
+    transition: color 0.3s ease, transform 0.2s ease;
+    padding: 5px;
+}
+
+.delete-button:hover {
+    color: #a02020;
+    transform: scale(1.1);
+}
