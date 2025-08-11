@@ -82,3 +82,23 @@ body, html {
 .hard:hover {
   background-color: #ffcdd2;
 }
+
+/* Add these styles to your ProblemList.css */
+
+.problem-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5px; /* Adjust spacing as needed */
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.problem-difficulty {
+    text-transform: capitalize;
+    font-weight: bold;
+}
+
+.problem-tags {
+    font-style: italic;
+}

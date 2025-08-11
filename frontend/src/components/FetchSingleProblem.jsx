@@ -8,6 +8,62 @@ import "../Styles/FetchSingleProblem.css";
 
 const problems = [
 
+
+ 
+  //2
+  [
+
+{/* <div className="Question">
+  <h1><strong>Next Greater Element I</strong></h1>
+  <div className="elfjS" data-track-load="description_content">
+    <p>
+      The next greater element of some element <code>x</code> in an array is the first greater element that is to the right of <code>x</code> in the same array.
+    </p>
+    <p>
+      You are given two distinct 0-indexed integer arrays <code>nums1</code> and <code>nums2</code>, where <code>nums1</code> is a subset of <code>nums2</code>.
+    </p>
+    <p>
+      For each <code>0 &lt;= i &lt; nums1.length</code>, find the index <code>j</code> such that <code>nums1[i] == nums2[j]</code> and determine the next greater element of <code>nums2[j]</code> in <code>nums2</code>. If there is no next greater element, then the answer is <code>-1</code>.
+    </p>
+    <p>
+      Return an array <code>ans</code> of length <code>nums1.length</code> such that <code>ans[i]</code> is the next greater element as described above.
+    </p>
+
+    <p><strong className="example">Example 1:</strong></p>
+    <pre>
+      <strong>Input:</strong> nums1 = [4,1,2], nums2 = [1,3,4,2]<br />
+      <strong>Output:</strong> [-1,3,-1]
+    </pre>
+
+    <p><strong className="example">Example 2:</strong></p>
+    <pre>
+      <strong>Input:</strong> nums1 = [2,4], nums2 = [1,2,3,4]<br />
+      <strong>Output:</strong> [3,-1]
+    </pre>
+
+    <p><strong>Constraints:</strong></p>
+    <ul>
+      <li><code>1 &lt;= nums1.length &lt;= nums2.length &lt;= 1000</code></li>
+      <li><code>0 &lt;= nums1[i], nums2[i] &lt;= 10⁴</code></li>
+      <li>All integers in <code>nums1</code> and <code>nums2</code> are unique.</li>
+      <li>All the integers of <code>nums1</code> also appear in <code>nums2</code>.</li>
+    </ul>
+  </div>
+</div>
+ */}
+
+
+
+
+
+
+
+ 
+
+
+ 
+
+  ],
   //1
   [
 
@@ -53,61 +109,7 @@ const problems = [
 
   ],
 
- 
-  //2
-  [
 
-<div className="Question">
-  <h1><strong>Next Greater Element I</strong></h1>
-  <div className="elfjS" data-track-load="description_content">
-    <p>
-      The next greater element of some element <code>x</code> in an array is the first greater element that is to the right of <code>x</code> in the same array.
-    </p>
-    <p>
-      You are given two distinct 0-indexed integer arrays <code>nums1</code> and <code>nums2</code>, where <code>nums1</code> is a subset of <code>nums2</code>.
-    </p>
-    <p>
-      For each <code>0 &lt;= i &lt; nums1.length</code>, find the index <code>j</code> such that <code>nums1[i] == nums2[j]</code> and determine the next greater element of <code>nums2[j]</code> in <code>nums2</code>. If there is no next greater element, then the answer is <code>-1</code>.
-    </p>
-    <p>
-      Return an array <code>ans</code> of length <code>nums1.length</code> such that <code>ans[i]</code> is the next greater element as described above.
-    </p>
-
-    <p><strong className="example">Example 1:</strong></p>
-    <pre>
-      <strong>Input:</strong> nums1 = [4,1,2], nums2 = [1,3,4,2]<br />
-      <strong>Output:</strong> [-1,3,-1]
-    </pre>
-
-    <p><strong className="example">Example 2:</strong></p>
-    <pre>
-      <strong>Input:</strong> nums1 = [2,4], nums2 = [1,2,3,4]<br />
-      <strong>Output:</strong> [3,-1]
-    </pre>
-
-    <p><strong>Constraints:</strong></p>
-    <ul>
-      <li><code>1 &lt;= nums1.length &lt;= nums2.length &lt;= 1000</code></li>
-      <li><code>0 &lt;= nums1[i], nums2[i] &lt;= 10⁴</code></li>
-      <li>All integers in <code>nums1</code> and <code>nums2</code> are unique.</li>
-      <li>All the integers of <code>nums1</code> also appear in <code>nums2</code>.</li>
-    </ul>
-  </div>
-</div>
-
-
-
-
-
-
-
-
- 
-
-
- 
-
-  ],
   //3
   [
     <>

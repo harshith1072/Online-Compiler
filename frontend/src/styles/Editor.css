@@ -195,3 +195,63 @@ body {
   /* ... other styles ... */
   height: 67vh; /* This will make the editor take up the full viewport height */
 }
+
+/* Container for all action buttons */
+.action-buttons-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+
+/* Container for Run and Submit buttons */
+.left-buttons {
+    display: flex;
+    gap: 15px; /* Adjust this value for spacing between the buttons */
+}
+
+/* Style for the "View Solution" button */
+.view-solution-btn {
+    background-color: #6c757d; /* A neutral gray */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none; /* Removes the underline from the Link */
+    transition: background-color 0.3s ease;
+}
+
+.view-solution-btn:hover {
+    background-color: #5a6268;
+}
+
+/* Adjustments for existing buttons */
+.run-btn,
+.submit-btn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.run-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.run-btn:hover {
+    background-color: #0056b3;
+}
+
+.submit-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.submit-btn:hover {
+    background-color: #218838;
+}
