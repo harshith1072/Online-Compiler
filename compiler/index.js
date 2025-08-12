@@ -16,40 +16,6 @@ app.get("/", (req, res) => {
 });
  
  
-// app.post("/run", async (req, res) => {
-//   const { language, code, input, problemId } = req.body;
-
-//   if (!code) {
-//     return res.status(200).json({ success: false, error: "Empty code!" });
-//   }
-
-//   try {
-//     const filePath = await generateFile(language, code);
-//     const inputFilePath = await generateInputFile(input);
-//     const output = await executeCode(language, filePath, inputFilePath);
- 
-//     const verdictResult = await verdict(problemId, async (input) => {
-//   const testFilePath = await generateFile(language, code);  
-//   const customInputPath = await generateInputFile(input);
-//   return await executeCode(language, testFilePath, customInputPath);
-// });
-
-
-//     // res.json({ filePath, inputFilePath, output, verdict: verdictResult });
-// res.json({ 
-//   filePath, 
-//   inputFilePath, 
-//   output: verdictResult.details?.[0]?.actual || output,  // use output of 1st test case
-//   verdict: verdictResult.verdict 
-// });
-
-
-
-//   } catch (error) {
-//     res.status(500).json({ error: error.message });
-//   }
-// });
-
 
 app.post("/run", async (req, res) => {
   const { language, code, input, problemId, isRun } = req.body;

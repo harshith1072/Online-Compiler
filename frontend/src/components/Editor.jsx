@@ -150,11 +150,16 @@ const Editor = () => {
 
 
             // Step 3: Send submission to backend
+            // await axios.post(
+            //     "http://localhost:9000/submissions",
+            //     submissionPayload,
+            //     { withCredentials: true }
+            // );
             await axios.post(
-                "http://localhost:9000/submissions",
-                submissionPayload,
-                { withCredentials: true }
-            );
+  "https://codejudge-lfe8.onrender.com/submissions",
+  submissionPayload,
+  { withCredentials: true }
+);
 
             console.log("Submission saved successfully");
         } catch (error) {

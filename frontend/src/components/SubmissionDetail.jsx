@@ -13,10 +13,20 @@ const SubmissionDetail = () => {
         const fetchSubmission = async () => {
             try {
                 // ✅ Fetch a single submission by its ID
-                const response = await axios.get(
-                    `http://localhost:9000/submissions/${id}`, 
-                    { withCredentials: true }
-                );
+                // const response = await axios.get(
+                //     `http://localhost:9000/submissions/${id}`, 
+                //     { withCredentials: true }
+                // );
+const response = await axios.get(
+  `https://codejudge-lfe8.onrender.com/submissions/${id}`,
+  { withCredentials: true }
+);
+
+
+
+
+
+
                 setSubmission(response.data);
             } catch (error) {
                 console.error("Error fetching submission details:", error);

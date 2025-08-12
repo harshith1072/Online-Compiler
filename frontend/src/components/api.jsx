@@ -1,19 +1,10 @@
  
 
-// import axios from 'axios'
-
-// const instance = axios.create({
-//     baseURL : "http://localhost:9000",
-     
-//     withcredentials : true,
-// });
-
-// export default instance;
-
  import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'http://localhost:9000',
+    // baseURL: 'http://localhost:9000',
+      baseURL: 'https://codejudge-lfe8.onrender.com',
     withCredentials: true, // ✅ This is what sends the cookie
 });
 

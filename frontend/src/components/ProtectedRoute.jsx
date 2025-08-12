@@ -10,10 +10,12 @@ const ProtectedRoute = ({ children }) => {
         const checkAuthStatus = async () => {
             try {
                  
-                const response = await axios.get("http://localhost:9000/check-auth", {
-                    withCredentials: true,
-                });
-                
+                // const response = await axios.get("http://localhost:9000/check-auth", {
+                //     withCredentials: true,
+                // });
+                const response = await axios.get("https://codejudge-lfe8.onrender.com/check-auth", {
+  withCredentials: true,
+});
                 if (response.status === 200) {
                     setIsAuthenticated(true);
                 } else {
