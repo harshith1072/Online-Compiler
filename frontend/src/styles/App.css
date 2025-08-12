@@ -1,0 +1,30 @@
+ 
+
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* This is the container for the whole application. */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* This class will be applied to the main content area (where your routes are).
+ * It tells the content to grow and fill all available space, pushing the footer down.
+ */
+.main-content {
+  flex: 1;
+}
+
+/* This class will be applied to your footer component.
+ * It prevents the footer from stretching and keeps it at the bottom.
+ */
+.footer {
+  flex-shrink: 0;
+}

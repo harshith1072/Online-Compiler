@@ -72,7 +72,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "../Styles/Submissions.css";
-import Footer from "./Footer";
+ 
 import { FiTrash2 } from 'react-icons/fi'; // ✅ Imported a delete icon
 
 const Submissions = () => {
@@ -164,7 +164,7 @@ const Submissions = () => {
                     )}
                 </div>
             </div>
-            <Footer />
+            {/* <Footer /> */}
         </>
     );
 };

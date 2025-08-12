@@ -69,30 +69,30 @@ const TestCasesComponent = (props) => {
     ],
     output: [3, -1],
   },
-  {
-    id: 3,
-    inputs: [
-      { name: "nums1", value: [1, 5] },
-      { name: "nums2", value: [6, 5, 4, 3, 2, 1, 7] },
-    ],
-    output: [7, 7],
-  },
-  {
-    id: 4,
-    inputs: [
-      { name: "nums1", value: [1] },
-      { name: "nums2", value: [1, 2] },
-    ],
-    output: [2],
-  },
-  {
-    id: 5,
-    inputs: [
-      { name: "nums1", value: [3, 5, 1] },
-      { name: "nums2", value: [1, 3, 4, 5, 6] },
-    ],
-    output: [4, 6, 3],
-  },
+  // {
+  //   id: 3,
+  //   inputs: [
+  //     { name: "nums1", value: [1, 5] },
+  //     { name: "nums2", value: [6, 5, 4, 3, 2, 1, 7] },
+  //   ],
+  //   output: [7, 7],
+  // },
+  // {
+  //   id: 4,
+  //   inputs: [
+  //     { name: "nums1", value: [1] },
+  //     { name: "nums2", value: [1, 2] },
+  //   ],
+  //   output: [2],
+  // },
+  // {
+  //   id: 5,
+  //   inputs: [
+  //     { name: "nums1", value: [3, 5, 1] },
+  //     { name: "nums2", value: [1, 3, 4, 5, 6] },
+  //   ],
+  //   output: [4, 6, 3],
+  // },
 ],
 
 
@@ -156,21 +156,21 @@ const TestCasesComponent = (props) => {
     inputs: [{ name: "String", value: ["()[]{}"] }],
     output: ["true"]
   },
-  {
-    id: 3,
-    inputs: [{ name: "String", value: ["(]"] }],
-    output: ["false"]
-  },
-  {
-    id: 4,
-    inputs: [{ name: "String", value: ["([)]"] }],
-    output: ["false"]
-  },
-  {
-    id: 5,
-    inputs: [{ name: "String", value: ["{[]}"] }],
-    output: ["true"]
-  }
+  // {
+  //   id: 3,
+  //   inputs: [{ name: "String", value: ["(]"] }],
+  //   output: ["false"]
+  // },
+  // {
+  //   id: 4,
+  //   inputs: [{ name: "String", value: ["([)]"] }],
+  //   output: ["false"]
+  // },
+  // {
+  //   id: 5,
+  //   inputs: [{ name: "String", value: ["{[]}"] }],
+  //   output: ["true"]
+  // }
 ],
 
 //5
@@ -423,30 +423,30 @@ const TestCasesComponent = (props) => {
     ],
     output: ["30"],
   },
-  {
-    id: 3,
-    inputs: [
-      { name: "piles", value: ["[30,11,23,4,20]"] },
-      { name: "h", value: ["6"] },
-    ],
-    output: ["23"],
-  },
-  {
-    id: 4,
-    inputs: [
-      { name: "piles", value: ["[1,1,1,1,1,1,1,1]"] },
-      { name: "h", value: ["8"] },
-    ],
-    output: ["1"],
-  },
-  {
-    id: 5,
-    inputs: [
-      { name: "piles", value: ["[1000000000]"] },
-      { name: "h", value: ["2"] },
-    ],
-    output: ["500000000"],
-  },
+  // {
+  //   id: 3,
+  //   inputs: [
+  //     { name: "piles", value: ["[30,11,23,4,20]"] },
+  //     { name: "h", value: ["6"] },
+  //   ],
+  //   output: ["23"],
+  // },
+  // {
+  //   id: 4,
+  //   inputs: [
+  //     { name: "piles", value: ["[1,1,1,1,1,1,1,1]"] },
+  //     { name: "h", value: ["8"] },
+  //   ],
+  //   output: ["1"],
+  // },
+  // {
+  //   id: 5,
+  //   inputs: [
+  //     { name: "piles", value: ["[1000000000]"] },
+  //     { name: "h", value: ["2"] },
+  //   ],
+  //   output: ["500000000"],
+  // },
 ],
 
 

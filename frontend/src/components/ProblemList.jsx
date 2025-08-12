@@ -5,29 +5,29 @@ import Footer from "./Footer";
 import { Link } from "react-router-dom";
 
 const ProblemList = () => {
-    const [problems, setProblems] = useState([]); 
-    const [loading, setLoading] = useState(true); 
+  const [problems, setProblems] = useState([]); 
+ const [loading, setLoading] = useState(true); 
 
-    useEffect(() => {
-        const fetchProblems = async () => {
-            try {
-                const response = await axios.get("http://localhost:9000/problems");
-                setProblems(response.data); 
-            } catch (error) {
-                console.error("Error fetching problems:", error);
-            } finally {
-                setLoading(false); 
-            }
-        };
-        fetchProblems();
-    }, []); 
+ useEffect(() => {
+ const fetchProblems = async () => {
+ try {
+  const response = await axios.get("http://localhost:9000/problems");
+ setProblems(response.data); 
+ } catch (error) {
+ console.error("Error fetching problems:", error);
+ } finally {
+ setLoading(false); 
+ }
+ };
+ fetchProblems();
+ }, []); 
 
-    if (loading) {
-        return <div className="loading">Loading problems...</div>;
-    }
+ if (loading) {
+ return <div className="loading">Loading problems...</div>;
+ }
 
-    return (
-        <>
+ return (
+ <>
             <div className="container-problem-list">
                 <div className="problem-list-header">
                     <div className="title">
@@ -52,13 +52,13 @@ const ProblemList = () => {
                                     )}
                                 </div>
                             </li>
-                        ))}
-                    </ul>
+ ))}
+ </ul>
                 </div>
-            </div>
-            <Footer />
-        </>
-    );
+ </div>
+ <Footer />
+ </>
+  );
 };
 
 export default ProblemList;
