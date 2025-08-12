@@ -30,7 +30,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json()); // ✅ Correct order: Body parsers first
 app.use(cookieParser()); // ✅ Cookie parser next
-app.use(cors({ origin: "http://localhost:5173", credentials: true })); // ✅ CORS last, before routes
+app.use(cors({
+  origin: ["http://localhost:5173", "https://online-compiler-076b.onrender.com"],
+  credentials: true
+}));// ✅ CORS last, before routes
 
 // ---------- USER ROUTES ----------
 app.post("/signup", validateSignup, userController.signup);
@@ -67,6 +70,10 @@ app.use(errorHandler);
 
 // Server start
 const PORT = process.env.PORT || 9000;
+app.get("/", (req, res) => {
+  res.json({ "backend": "online" });
+});
+ 
 app.listen(PORT, () => {
   console.log(`✅ Server is running on port ${PORT}`);
 });
