@@ -1,6 +1,9 @@
+<<<<<<< HEAD
  
+=======
+>>>>>>> 472ed62
 if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config();
+    require("dotenv").config();
 }
 
 // Imports
@@ -9,6 +12,7 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const connectToMongo = require("./config/connectToMongo");
+const mongoose = require("mongoose"); // Added mongoose import
 
 // Controllers & Middleware
 const userController = require("./routes/userController");
@@ -19,6 +23,9 @@ const requireAuth = require("./middleware/requireAuth");
 const errorHandler = require("./middleware/errorHandler");
 const { validateSignup, validateLogin } = require("./middleware/validationMiddleware");
 
+// Import the new admin controller from the 'routes' folder
+const adminController = require('./routes/adminController');
+
 // Initialize app
 const app = express();
 
@@ -28,12 +35,18 @@ connectToMongo();
 // --- Middleware (Correct Order) ---
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+<<<<<<< HEAD
 app.use(express.json()); // ✅ Correct order: Body parsers first
 app.use(cookieParser()); // ✅ Cookie parser next
 app.use(cors({
   origin: ["http://localhost:5173", "https://online-compiler-076b.onrender.com"],
   credentials: true
 }));// ✅ CORS last, before routes
+=======
+app.use(express.json()); 
+app.use(cookieParser());
+app.use(cors({ origin: "http://localhost:5173", credentials: true })); 
+>>>>>>> 472ed62
 
 // ---------- USER ROUTES ----------
 app.post("/signup", validateSignup, userController.signup);
@@ -59,15 +72,19 @@ app.get("/byProblem/:problemId", testCaseController.getTestCasesByProblemId);
 
 // ---------- SUBMISSION ROUTES ----------
 app.get("/submissions/user", requireAuth, submissionController.getUserSubmissions);
-
-app.get("/submissions", submissionController.getAllSubmissions);
+// app.get("/submissions", submissionController.getAllSubmissions);
 app.get("/submissions/:id", submissionController.getSubmissionById);
 app.post("/submissions", requireAuth, submissionController.createSubmission);
 app.put("/submissions/:id", submissionController.updateSubmission);
 app.delete("/submissions/:id", submissionController.deleteSubmission);
+
+// New Admin Routes
+app.post("/api/admin/register", adminController.adminRegister);
+app.post("/api/admin/login", adminController.adminLogin);
+ 
 // Error handler
 app.use(errorHandler);
-
+ 
 // Server start
 const PORT = process.env.PORT || 9000;
 app.get("/", (req, res) => {
@@ -75,5 +92,5 @@ app.get("/", (req, res) => {
 });
  
 app.listen(PORT, () => {
-  console.log(`✅ Server is running on port ${PORT}`);
+  console.log(`✅ Server is running on port ${PORT}`);
 });

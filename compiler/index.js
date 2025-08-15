@@ -38,8 +38,8 @@ try {
   }, isRun); 
 
   return res.json({ 
-    output: resultLog,          // Show resultLog in frontend output
-    verdict: "click on submit"  // Keep static or handle separately
+    output: resultLog,           
+    verdict: "click on submit"   
   });
 } catch (error) {
   console.log(error);
