@@ -1,7 +1,7 @@
- /* Page Container */
-.signup-page {
+/* Page Container */
+.login-page {
     min-height: 100vh;
-    background: linear-gradient(135deg, #f0f4f8 0%, #e1f5fe 100%);
+    background: #f0f0f0; /* Changed to a light ash color */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,19 +9,19 @@
     padding: 2rem;
 }
 
-/* Signup Card */
-.signup-card {
+/* Login Card */
+.login-card {
     width: 100%;
-    max-width: 480px;
+    max-width: 450px;
     background: rgba(255, 255, 255, 0.98);
     padding: 50px;
     border-radius: 20px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1); /* Adjusted shadow for light background */
     position: relative;
     transition: all 0.3s ease;
 }
 
-.signup-card:hover {
+.login-card:hover {
     transform: translateY(-5px);
 }
 
@@ -45,32 +45,27 @@
 }
 
 /* Header and Title */
-.signup-header {
+.login-header {
     text-align: center;
     margin-bottom: 30px;
 }
 
-.signup-title {
+.login-title {
     font-size: 2rem;
     font-weight: 700;
     color: #333;
     margin: 0;
 }
 
-.signup-subtitle {
+.login-subtitle {
     font-size: 1rem;
     color: #777;
     margin-top: 5px;
 }
 
 /* Form Groups */
-.signup-form {
-    display: flex;
-    flex-direction: column;
-}
-
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     text-align: left;
 }
 
@@ -99,55 +94,55 @@
 }
 
 /* Buttons */
-.signup-button {
+.login-button {
     width: 100%;
     padding: 15px;
     font-size: 1.1rem;
     font-weight: 600;
     border: none;
     border-radius: 10px;
-    background-color: #667eea; /* Changed to a vibrant blue */
+    background-color: #667eea;
     color: #fff;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
     box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
 }
 
-.signup-button:hover {
+.login-button:hover {
     background-color: #5566c1;
     transform: translateY(-2px);
 }
 
-.signup-button:disabled {
+.login-button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
     transform: none;
     box-shadow: none;
 }
 
-/* Login Link */
-.login-link-text {
+/* Register Link */
+.register-link-text {
     margin-top: 20px;
     font-size: 0.95rem;
     color: #555;
     text-align: center;
 }
 
-.login-link {
+.register-link {
     color: #667eea;
     text-decoration: none;
     font-weight: 600;
 }
 
-.login-link:hover {
+.register-link:hover {
     text-decoration: underline;
 }
 
 @media (max-width: 500px) {
-    .signup-card {
+    .login-card {
         padding: 40px 30px;
     }
-    .signup-title {
+    .login-title {
         font-size: 1.75rem;
     }
 }

@@ -77,7 +77,7 @@ const verdict = async (problemId, executeCode, isRun = false) => {
     }
 
     const response = await axios.get(
-      `http://localhost:9000/byProblem/${problemId}`
+      `http://localhost:9000/byProblem/${problemId-1}`
     );
 
     let testCases = response.data;
