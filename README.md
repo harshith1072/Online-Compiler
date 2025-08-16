@@ -2,7 +2,7 @@
  
 # CodeJudge
 
-CodeJudge is a simple online tool for practicing programming problems. It provides a code editor, a compiler to run your code, and an AI that can review your code to help you improve.
+CodeJudge is an online platform for practicing programming problems. It features a code editor and compiler, and an AI that reviews your code to help you improve. It's a tool for anyone who wants to sharpen their coding skills, from students to professionals.The platform's simplicity and AI-driven feedback loop are designed to make the process of improving your coding abilities more efficient and effective.
 
 ---
 
@@ -44,8 +44,8 @@ CodeJudge is a simple online tool for practicing programming problems. It provid
 To set up the project locally, follow these steps:
 
 ### Prerequisites
-- Node.js (v14.x or later)
-- npm (or yarn)
+- Node.js 
+- npm  
 
 ### Installation
 Clone the repository:
@@ -59,76 +59,87 @@ Install the dependencies:
 ```bash
 npm install
 ```
+This is a great start for a README file\! It clearly outlines the key aspects of your project. Here is a more complete, properly structured, and polished version of your content.
 
-### Running the Application
+-----
 
-Start the development server:
+###  Getting Started
 
-```bash
-npm start
- 
+#### Running the Application
 
----
+To get the application up and running, follow these simple steps:
 
-## API Endpoints
+1.  **Start the development server:**
+    ```bash
+    npm start
+    ```
 
-The application interacts with two main APIs.
+-----
 
-### 1. CodeJudge Backend API
+###  API Endpoints
 
-Base URL: `https://codejudge-lfe8.onrender.com`
+The application interacts with two primary APIs to function.
 
-| Method | Endpoint            | Description                        |
-| ------ | ------------------- | ---------------------------------- |
-| POST   | /api/admin/register | Registers a new admin account      |
-| POST   | /api/admin/login    | Authenticates an admin             |
-| GET    | /problems           | Fetches all problems               |
-| GET    | /problems/\:id      | Fetches a single problem by ID     |
-| POST   | /problems           | Creates a new problem (admin only) |
-| DELETE | /problems/\:id      | Deletes a problem (admin only)     |
-| GET    | /byProblem/\:id     | Fetches test cases for a problem   |
-| POST   | /submissions        | Submits a solution for a problem   |
+#### 1\. CodeJudge Backend API
 
-### 2. Online Compiler
+  * **Base URL:** `https://codejudge-lfe8.onrender.com`
 
-Base URL: `https://online-compiler-076b.onrender.com`
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `POST` | `/api/admin/register` | Registers a new admin account. |
+| `POST` | `/api/admin/login` | Authenticates an admin. |
+| `GET` | `/problems` | Fetches all available problems. |
+| `GET` | `/problems/:id` | Fetches a single problem by its ID. |
+| `POST` | `/problems` | Creates a new problem (admin-only). |
+| `DELETE`| `/problems/:id`| Deletes a specific problem (admin-only). |
+| `GET` | `/byProblem/:id`| Fetches all test cases for a given problem. |
+| `POST` | `/submissions` | Submits a solution for a problem. |
 
-| Method | Endpoint   | Description                          |
-| ------ | ---------- | ------------------------------------ |
-| POST   | /run       | Compiles and runs a code snippet     |
-| POST   | /ai-review | Provides an AI review of the code    |
-| POST   | /custom    | Runs code against a custom test case |
+#### 2\. Online Compiler API
 
----
+  * **Base URL:** `https://online-compiler-076b.onrender.com`
 
-## Contributing
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `POST`| `/run`| Compiles and runs a code snippet. |
+| `POST`| `/ai-review`| Provides an AI-powered review of the code. |
+| `POST`| `/custom`| Runs code against a custom test case provided by the user. |
 
-Contributions are welcome! To contribute:
+-----
 
-1. Fork the project
-2. Create your feature branch
+### 👋 Contributing
 
-   ```bash
-   git checkout -b feature/AmazingFeature
-   ```
-3. Commit your changes
+We welcome contributions to this project\! To get started, please follow these steps:
 
-   ```bash
-   git commit -m "Add some AmazingFeature"
-   ```
-4. Push to the branch
+1.  **Fork the project:** Click the "Fork" button in the top-right corner of the repository page.
+2.  **Create your feature branch:**
+    ```bash
+    git checkout -b feature/your-amazing-feature
+    ```
+3.  **Commit your changes:**
+    ```bash
+    git commit -m "feat: Add a new amazing feature"
+    ```
+4.  **Push to the branch:**
+    ```bash
+    git push origin feature/your-amazing-feature
+    ```
+5.  **Open a Pull Request:** Navigate to the original repository and open a pull request from your forked branch.
 
-   ```bash
-   git push origin feature/AmazingFeature
-   ```
-5. Open a Pull Request
-
----
-
+----- 
 ## Project Demo & Documentation
 
 * **Live Demo**: [https://codejudge-ochre.vercel.app/](https://codejudge-ochre.vercel.app/)
 * **Video Demo**: [Watch Here](https://www.loom.com/share/2778ceb8186b4ac8b0a67d3236fc9c68?sid=f30072a7-7364-4aad-9e1b-7ae7b5da427a)
 * **High-Level Design Document (HLD)**: [View Document](https://drive.google.com/file/d/1Kb6BmLl7olUHygZbVvswqvsKbBWS81wb/view?usp=sharing)
+
+### 📝 Contact
+
+If you have any questions or feedback, feel free to reach out.
+
+  * **Your Name:** [Harshith Mateti]
+  * **Email:** [harshithmateti2005@gmail.com]
+ 
+
 
  
