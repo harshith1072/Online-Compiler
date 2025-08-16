@@ -7,7 +7,7 @@ import config from "./config";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Spinner from "./Spinner";
-import "../Styles/Signup.css";
+import "../styles/Signup.css";
 
 const SERVER_URL = config.SERVER_URL;
 

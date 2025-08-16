@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import "../Styles/Submissions.css";
+import "../styles/Submissions.css";
  
 import { FiTrash2 } from 'react-icons/fi'; // ✅ Imported a delete icon
 // const SERVER_URL = "http://localhost:9000";

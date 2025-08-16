@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Editor from "./Editor";
-import '../Styles/FetchSingleProblem.css';
+import '../styles/FetchSingleProblem.css';
 import ReactMarkdown from 'react-markdown'; // Import ReactMarkdown
 
 const FetchSingleProblem = () => {

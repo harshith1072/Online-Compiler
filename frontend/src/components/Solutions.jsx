@@ -5,7 +5,7 @@ import SyntaxHighlighter from "react-syntax-highlighter";
 import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import Select from "react-select";
 import Footer from "./Footer";
-import "../Styles/Solution.css";
+import "../styles/Solution.css";
 import CopyToClipboard from "react-copy-to-clipboard"; // ✅ Re-added the import
 
 // Your solutions data should be structured like this

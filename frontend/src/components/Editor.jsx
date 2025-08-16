@@ -3,7 +3,7 @@ import MonacoEditor from "@monaco-editor/react";
 import axios from "axios";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
-import "../Styles/Editor.css";
+import "../styles/Editor.css";
 
 const Editor = () => {
   // const COMPILER_URL = "http://localhost:8000";

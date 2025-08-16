@@ -1,7 +1,7 @@
  
 import React, { useState, useEffect } from "react";
 import TestCaseList from "./TestCaseList";
-import "../Styles/TestCases.css";
+import "../styles/TestCases.css";
 import TestCaseForm from "./TestCaseForm";
 
 const TestCasesComponent = (props) => {

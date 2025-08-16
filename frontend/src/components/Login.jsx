@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import api from './api';
 
-import "../Styles/Login.css";
+import "../styles/Login.css";
 
 const Login = () => {
     const [email, setEmail] = useState('');
