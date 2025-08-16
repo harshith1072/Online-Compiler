@@ -6,8 +6,10 @@ import ReactMarkdown from "react-markdown";
 import "../Styles/Editor.css";
 
 const Editor = () => {
-  const COMPILER_URL = "http://localhost:8000";
-  const SERVER_URL = "http://localhost:9000";
+  // const COMPILER_URL = "http://localhost:8000";
+  // const SERVER_URL = "http://localhost:9000";
+    const COMPILER_URL = "https://online-compiler-076b.onrender.com";
+  const SERVER_URL = "https://codejudge-lfe8.onrender.com";
   const navigate = useNavigate();
 
   const defaultCode = {
@@ -85,7 +87,7 @@ const Editor = () => {
     e.preventDefault();
     const payload = { code: code };
     try {
-      const { data } = await axios.post(`${COMPILER_URL}/ai-review`, payload);
+      const { data } = await axios.post(`https://online-compiler-076b.onrender.com/ai-review`, payload);
       setAIReviewResult(data.review);
     } catch (error) {
       console.error(error);
@@ -103,7 +105,7 @@ const Editor = () => {
       isRun: true,
     };
     try {
-      const { data } = await axios.post(`${COMPILER_URL}/run`, payload);
+      const { data } = await axios.post(`https://online-compiler-076b.onrender.com/run`, payload);
       setOutput(data.output);
     } catch (error) {
       console.error(error);
@@ -121,7 +123,7 @@ const Editor = () => {
       problemId: parseInt(id, 10) + 1,
     };
     try {
-      const { data } = await axios.post(`${COMPILER_URL}/run`, payload);
+      const { data } = await axios.post(`https://online-compiler-076b.onrender.com/run`, payload);
       setOutput(data.output);
 
       const submissionPayload = {
@@ -135,7 +137,7 @@ const Editor = () => {
         result: data.output,
       };
 
-      await axios.post(`${SERVER_URL}/submissions`, submissionPayload, {
+      await axios.post(`https://codejudge-lfe8.onrender.com/submissions`, submissionPayload, {
         withCredentials: true,
       });
       console.log("Submission saved successfully");
@@ -153,7 +155,7 @@ const Editor = () => {
       problemId: parseInt(id, 10) + 1,
     };
     try {
-      const { data } = await axios.post(`${COMPILER_URL}/custom`, payload);
+      const { data } = await axios.post(`https://online-compiler-076b.onrender.com/custom`, payload);
       setActualCustomOutput(data.output);
       if (customOutput.trim() === data.output.trim()) {
         setVerdict("pass");

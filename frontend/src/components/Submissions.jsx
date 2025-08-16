@@ -6,7 +6,8 @@ import { Link } from "react-router-dom";
 import "../Styles/Submissions.css";
  
 import { FiTrash2 } from 'react-icons/fi'; // ✅ Imported a delete icon
-const SERVER_URL = "http://localhost:9000";
+// const SERVER_URL = "http://localhost:9000";
+const SERVER_URL = "https://codejudge-lfe8.onrender.com";
 const Submissions = () => {
     const [submissions, setSubmissions] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -18,16 +19,16 @@ const Submissions = () => {
         if (window.confirm("Are you sure you want to delete this submission?")) {
             try {
                 // ✅ Make a DELETE request to your backend
-                // const response = await axios.delete(
-                //     `http://localhost:9000/submissions/${submissionId}`, 
-                //     { withCredentials: true }
-                // );
+                const response = await axios.delete(
+                    `https://codejudge-lfe8.onrender.com/${submissionId}`, 
+                    { withCredentials: true }
+                );
                              
                 
-                const response = await axios.delete(
-    `${SERVER_URL}/submissions/${submissionId}`,
-    { withCredentials: true }
-);
+//                 const response = await axios.delete(
+//     `${SERVER_URL}/submissions/${submissionId}`,
+//     { withCredentials: true }
+// );
                
                 
                 if (response.status === 200) {
@@ -47,13 +48,13 @@ const Submissions = () => {
     useEffect(() => {
         const fetchUserSubmissions = async () => {
             try {
-                // const response = await axios.get("http://localhost:9000/submissions/user", {
-                //     withCredentials: true,
-                // });
-                               const response = await axios.get(
-    `${SERVER_URL}/submissions/user`,
-    { withCredentials: true }
-);
+                const response = await axios.get("https://codejudge-lfe8.onrender.com/submissions/user", {
+                    withCredentials: true,
+                });
+//                                const response = await axios.get(
+//     `${SERVER_URL}/submissions/user`,
+//     { withCredentials: true }
+// );
                 setSubmissions(response.data);
             } catch (error) {
                 console.error("Error fetching submissions:", error);

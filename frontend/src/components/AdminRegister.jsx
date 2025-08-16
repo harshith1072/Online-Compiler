@@ -125,7 +125,7 @@
 
 
 
-const BASE_URL = "http://localhost:9000";
+const BASE_URL = "https://codejudge-lfe8.onrender.com";
 
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
@@ -142,7 +142,7 @@ const AdminRegister = () => {
         setMessage('');
 
         try {
-            const response = await fetch(`${BASE_URL}/api/admin/register`, {
+            const response = await fetch(`https://codejudge-lfe8.onrender.com/api/admin/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

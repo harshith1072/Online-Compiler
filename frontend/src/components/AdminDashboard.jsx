@@ -115,7 +115,9 @@
 
 // export default AdminDashboard;
 
-const BASE_URL = "http://localhost:9000";
+// const BASE_URL = "http://localhost:9000";
+const BASE_URL = "https://codejudge-lfe8.onrender.com";
+
 
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
@@ -137,7 +139,7 @@ const AdminDashboard = () => {
     useEffect(() => {
         const fetchProblems = async () => {
             try {
-                const response = await fetch(`${BASE_URL}/problems`);
+                const response = await fetch(`https://codejudge-lfe8.onrender.com/problems`);
                 if (!response.ok) {
                     const text = await response.text();
                     throw new Error(`Failed to fetch problems. Server responded with: ${text}`);
@@ -156,7 +158,7 @@ const AdminDashboard = () => {
     const handleDelete = async (id) => {
         if (window.confirm('Are you sure you want to delete this problem?')) {
             try {
-                const response = await fetch(`${BASE_URL}/problems/${id}`, {
+                const response = await fetch(`https://codejudge-lfe8.onrender.com/problems/${id}`, {
                     method: 'DELETE',
                 });
                 if (!response.ok) {

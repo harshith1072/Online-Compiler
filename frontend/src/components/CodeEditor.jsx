@@ -69,11 +69,17 @@ console.log(a + b);`
         const payload = { language, code, input };
 
         try {
-            const response = await fetch(import.meta.env.VITE_BACKEND_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            });
+            // const response = await fetch(import.meta.env.VITE_BACKEND_URL, {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify(payload)
+            // });
+            const response = await fetch("https://online-compiler-076b.onrender.com/run1", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+});
+
 
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);

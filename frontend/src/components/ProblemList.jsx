@@ -13,8 +13,8 @@ const ProblemList = () => {
     useEffect(() => {
         const fetchProblems = async () => {
             try {
-                // const response = await axios.get("https://codejudge-lfe8.onrender.com/problems");
-                const response = await axios.get("http://localhost:9000/problems");
+                const response = await axios.get("https://codejudge-lfe8.onrender.com/problems");
+                // const response = await axios.get("http://localhost:9000/problems");
                 setProblems(response.data); 
             } catch (error) {
                 console.error("Error fetching problems:", error);

@@ -15,7 +15,9 @@ const FetchSingleProblem = () => {
     useEffect(() => {
         const fetchProblemData = async () => {
             try {
-                const problemResponse = await fetch(`http://localhost:9000/problems/${id}`);
+                // const problemResponse = await fetch(`http://localhost:9000/problems/${id}`);
+                const problemResponse = await fetch(`https://codejudge-lfe8.onrender.com/problems/${id}`);
+
                 if (!problemResponse.ok) {
                     const text = await problemResponse.text();
                     throw new Error(`Failed to fetch problem data. Server responded with: ${text}`);
@@ -23,7 +25,9 @@ const FetchSingleProblem = () => {
                 const problemData = await problemResponse.json();
                 setProblem(problemData);
 
-                const testCasesResponse = await fetch(`http://localhost:9000/byProblem/${id}`);
+                // const testCasesResponse = await fetch(`http://localhost:9000/byProblem/${id}`);
+                const testCasesResponse = await fetch(`https://codejudge-lfe8.onrender.com/byProblem/${id}`);
+
                 if (!testCasesResponse.ok) {
                     const text = await testCasesResponse.text();
                     throw new Error(`Failed to fetch test cases. Server responded with: ${text}`);

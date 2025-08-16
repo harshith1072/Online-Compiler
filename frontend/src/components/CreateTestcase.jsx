@@ -1,11 +1,13 @@
  
 
 
-const BASE_URL = "http://localhost:9000";
+// const BASE_URL = "http://localhost:9000";
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Save, ArrowLeft, PlusCircle, Trash2 } from 'lucide-react';
 
+
+const BASE_URL = "https://codejudge-lfe8.onrender.com";
 const CreateTestcase = () => {
     // We no longer get the problem_id from params, so we initialize it as an empty string
     const navigate = useNavigate();
@@ -58,7 +60,7 @@ const CreateTestcase = () => {
         try {
             // Send each test case as a separate request
             const results = await Promise.all(testcases.map(async (testcase) => {
-                const response = await fetch('${BASE_URL}/testcases', {
+                const response = await fetch('https://codejudge-lfe8.onrender.com/testcases', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

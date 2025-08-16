@@ -70,10 +70,15 @@ const verdict = async (problemId, executeCode, isRun = false) => {
     }
 
 
-    const response = await axios.get(
-      `http://localhost:9000/byProblem/${problemId-1}`
+    // const response = await axios.get(
+    //   `http://localhost:9000/byProblem/${problemId-1}`
+    // );
+
+       const response = await axios.get(
+      `https://codejudge-lfe8.onrender.com/byProblem/${problemId-1}`
     );
     
+
 
     let testCases = response.data;
     if (isRun) testCases = testCases.slice(0, 2);

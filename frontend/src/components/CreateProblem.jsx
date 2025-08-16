@@ -212,7 +212,7 @@
 // export default CreateProblem;
 
 
-const BASE_URL = "http://localhost:9000";
+const BASE_URL = "https://codejudge-lfe8.onrender.com";
 
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -264,7 +264,7 @@ const CreateProblem = () => {
         };
         
         try {
-            const response = await fetch(`${BASE_URL}/problems`, {
+            const response = await fetch(`https://codejudge-lfe8.onrender.com/problems`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -6,7 +6,8 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
-  const SERVER_URL = "http://localhost:9000";
+//   const SERVER_URL = "http://localhost:9000";;
+  const SERVER_URL = "https://codejudge-lfe8.onrender.com"
 const SubmissionDetail = () => {
     const { id } = useParams();
     const [submission, setSubmission] = useState(null);
@@ -16,8 +17,13 @@ const SubmissionDetail = () => {
         const fetchSubmission = async () => {
             try {
            
-                     const response = await axios.get(
-                           `${SERVER_URL}/submissions/${id}`,
+                    //  const response = await axios.get(
+                    //        `${SERVER_URL}/submissions/${id}`,
+                    //             { withCredentials: true }
+                    //              );
+
+                       const response = await axios.get(
+                           `https://codejudge-lfe8.onrender.com/submissions/${id}`,
                                 { withCredentials: true }
                                  );
 
