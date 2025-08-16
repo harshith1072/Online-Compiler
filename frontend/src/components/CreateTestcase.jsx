@@ -1,6 +1,4 @@
  
-
-
 // const BASE_URL = "http://localhost:9000";
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';

@@ -253,7 +253,7 @@ const Homepage = () => {
 
                     {/* Desktop Navigation */}
                     <div className="hidden md:flex space-x-6 items-center">
-                        <Link to="/problems" className="text-gray-600 hover:text-gray-900 transition-colors duration-200">Problems</Link>
+                        {/* <Link to="/problems" className="text-gray-600 hover:text-gray-900 transition-colors duration-200">Problems</Link> */}
                         <Link to="/codeEditor" className="text-gray-600 hover:text-gray-900 transition-colors duration-200">Compiler</Link>
                         {/* New Admin Login link */}
                         <Link to="/admin-login" className="text-gray-600 hover:text-gray-900 transition-colors duration-200">Admin Login</Link>

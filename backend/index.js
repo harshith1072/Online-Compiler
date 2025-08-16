@@ -33,7 +33,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json()); 
 app.use(cookieParser());
-app.use(cors({ origin: "http://localhost:5173", credentials: true })); 
+app.use(cors({
+  origin: ["http://localhost:5173", "https://codejudge-ochre.vercel.app"],
+  credentials: true
+}));
 
 // ---------- USER ROUTES ----------
 app.post("/signup", validateSignup, userController.signup);
