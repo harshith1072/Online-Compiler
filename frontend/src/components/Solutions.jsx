@@ -52,84 +52,97 @@ int main() {
     return 0;
 }
 `,
-    python: `
-def minJumps(nums):
-    n = len(nums)
-    if n <= 1:
-        return 0
-    
-    jumps = 0
-    current_end = 0
-    farthest = 0
-    
-    for i in range(n - 1):
-        farthest = max(farthest, i + nums[i])
-        if i == current_end:
-            jumps += 1
-            current_end = farthest
-            if current_end >= n - 1:
-                break
-    
-    return jumps
+    python: `def minJumps(nums):
+    n = len(nums)
+    if n <= 1:
+        return 0
+
+    jumps = 0
+    current_end = 0
+    farthest = 0
+
+    for i in range(n - 1):
+        farthest = max(farthest, i + nums[i])
+        if i == current_end:
+            jumps += 1
+            current_end = farthest
+            if current_end >= n - 1:
+                break
+
+    return jumps
+
 
 if __name__ == "__main__":
-    n_str = input().strip()
-    if n_str == 'NIL':
-        n = 0
-    else:
-        n = int(n_str)
-    
-    if n > 0:
-        nums = list(map(int, input().strip().split()))
-    else:
-        nums = []
-        
-    jumps = minJumps(nums)
-    print(jumps)
+    try:
+        n_str = input().strip()
+    except EOFError:
+        n_str = ""
+
+    if not n_str or n_str == "NIL":
+        n = 0
+    else:
+        n = int(n_str)
+
+    if n > 0:
+        try:
+            nums = list(map(int, input().strip().split()))
+        except EOFError:
+            nums = []
+    else:
+        nums = []
+
+    jumps = minJumps(nums)
+    print(jumps)
+
 `,
-    java: `
-import java.util.*;
+    java: `import java.util.*;
 
 public class Main {
-    public static int minJumps(int[] nums) {
-        int n = nums.length;
-        if (n <= 1) {
-            return 0;
-        }
+    public static int minJumps(int[] nums) {
+        int n = nums.length;
+        if (n <= 1) return 0;
 
-        int jumps = 0, currentEnd = 0, farthest = 0;
-        for (int i = 0; i < n - 1; i++) {
-            farthest = Math.max(farthest, i + nums[i]);
-            if (i == currentEnd) {
-                jumps++;
-                currentEnd = farthest;
-                if (currentEnd >= n - 1) {
-                    break;
-                }
-            }
-        }
-        return jumps;
-    }
+        int jumps = 0, currentEnd = 0, farthest = 0;
+        for (int i = 0; i < n - 1; i++) {
+            farthest = Math.max(farthest, i + nums[i]);
+            if (i == currentEnd) {
+                jumps++;
+                currentEnd = farthest;
+                if (currentEnd >= n - 1) break;
+            }
+        }
+        return jumps;
+    }
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        
-        String first = sc.next();
-        int n = first.equals("NIL") ? 0 : Integer.parseInt(first);
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
 
-        if (n == 0) {
-            System.out.println(0);
-            return;
-        }
+        if (!sc.hasNext()) {  // no input at all
+            System.out.println(0);
+            return;
+        }
 
-        int[] a = new int[n];
-        for (int i = 0; i < n; i++) {
-            a[i] = sc.nextInt();
-        }
+        String first = sc.next();
+        int n = first.equals("NIL") ? 0 : Integer.parseInt(first);
 
-        System.out.println(minJumps(a));
-    }
+        if (n == 0) {
+            System.out.println(0);
+            return;
+        }
+
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            if (sc.hasNextInt()) {
+                a[i] = sc.nextInt();
+            } else {
+                a[i] = 0; // default if input missing
+            }
+        }
+
+        System.out.println(minJumps(a));
+    }
 }
+
 `,
     javascript: `
 const fs = require("fs");
@@ -233,21 +246,11 @@ int main() {
 `,
 
 
+ 
 
+    java: `
 
-
-
-
-
-
-
-
-
-
-
-
-
-    java: `import java.util.*;
+import java.util.*;
 
 public class Main {
     public static boolean canMake(int[] bloomDay, int m, int k, int day) {
@@ -285,46 +288,72 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+
+        if (!sc.hasNextLine()) { // no input at all
+            System.out.println(0);
+            sc.close();
+            return;
+        }
+
         try {
             int n = Integer.parseInt(sc.nextLine().trim());
+
+            if (!sc.hasNextLine()) { // missing bloomDay line
+                System.out.println(0);
+                sc.close();
+                return;
+            }
+
             String[] bloomStrings = sc.nextLine().trim().split("\\s+");
             if (bloomStrings.length != n) {
                 System.out.println("Error: Number of elements does not match the value of n.");
+                sc.close();
                 return;
             }
+
             int[] bloomDay = new int[n];
             for (int i = 0; i < n; i++) {
-                bloomDay[i] = Integer.parseInt(bloomStrings[i].replaceAll("[^0-9]", ""));
+                bloomDay[i] = Integer.parseInt(bloomStrings[i]); // keep negatives if any
+            }
+
+            if (!sc.hasNextLine()) { // missing m and k
+                System.out.println(0);
+                sc.close();
+                return;
             }
 
             String mkLine = sc.nextLine().trim();
-            while (mkLine.isEmpty()) { // skip blank lines
+            while (mkLine.isEmpty() && sc.hasNextLine()) { // skip blanks safely
                 mkLine = sc.nextLine().trim();
             }
+
             String[] mk = mkLine.split("\\s+");
-            if (mk.length == 1) { 
+            int m, k;
+            if (mk.length == 1 && sc.hasNextLine()) { 
                 // m and k are on separate lines
-                int m = Integer.parseInt(mk[0]);
-                int k = Integer.parseInt(sc.nextLine().trim());
-                System.out.println(minDays(bloomDay, m, k));
+                m = Integer.parseInt(mk[0]);
+                k = Integer.parseInt(sc.nextLine().trim());
             } else {
-                int m = Integer.parseInt(mk[0]);
-                int k = Integer.parseInt(mk[1]);
-                System.out.println(minDays(bloomDay, m, k));
+                m = Integer.parseInt(mk[0]);
+                k = Integer.parseInt(mk[1]);
             }
+
+            System.out.println(minDays(bloomDay, m, k));
         } catch (NumberFormatException e) {
             System.out.println("Invalid input. Please enter integers only.");
         }
+
         sc.close();
     }
 }
 
- 
- 
 
 
 `,
-    python: `def can_make(bloom_day, m, k, day):
+    python: `
+ 
+
+def can_make(bloom_day, m, k, day):
     count = 0
     bouquets = 0
     for b in bloom_day:
@@ -352,24 +381,50 @@ def min_days(bloom_day, m, k):
             left = mid + 1
     return ans
 
+
 try:
-    n_line = input().strip()
+    # Read n safely
+    try:
+        n_line = input().strip()
+    except EOFError:
+        n_line = ""
+    if not n_line:
+        print(0)
+        exit()
+
     n = int(n_line)
 
-    bloom_line = input().strip()
-    bloom_day = [int(x.strip("[], ")) for x in bloom_line.split()]
+    # Read bloomDay safely
+    try:
+        bloom_line = input().strip()
+    except EOFError:
+        bloom_line = ""
+    if not bloom_line:
+        print(0)
+        exit()
+
+    bloom_day = list(map(int, bloom_line.split()))
 
     if len(bloom_day) != n:
         print("Error: Number of elements does not match the value of n.")
     else:
-        mk_line = input().strip()
-        while mk_line == "":
+        # Read m and k safely
+        try:
             mk_line = input().strip()
-        mk_parts = mk_line.split()
+            while mk_line == "" and mk_line is not None:
+                mk_line = input().strip()
+        except EOFError:
+            print(0)
+            exit()
 
+        mk_parts = mk_line.split()
         if len(mk_parts) == 1:
             m = int(mk_parts[0])
-            k = int(input().strip())
+            try:
+                k = int(input().strip())
+            except EOFError:
+                print(0)
+                exit()
         else:
             m = int(mk_parts[0])
             k = int(mk_parts[1])
@@ -378,8 +433,6 @@ try:
 
 except ValueError:
     print("Invalid input. Please enter integers only.")
-
-
 
 
  `,
@@ -508,12 +561,23 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         try {
+            if (!sc.hasNextLine()) {   // no input provided
+                System.out.println(0);
+                return;
+            }
             int n = Integer.parseInt(sc.nextLine().trim());
+
+            if (!sc.hasNextLine()) {   // no second line provided
+                System.out.println(0);
+                return;
+            }
+
             String[] numStrings = sc.nextLine().trim().split("\\s+");
             if (numStrings.length != n) {
                 System.out.println("Error: Number of elements does not match the value of n.");
                 return;
             }
+
             int[] nums = new int[n];
             for (int i = 0; i < n; i++) {
                 nums[i] = Integer.parseInt(numStrings[i]);
@@ -525,43 +589,54 @@ public class Main {
     }
 }
 
- 
 
 `,
-    python: `
-def rob_linear(nums):
-    rob_prev = 0
-    no_rob_prev = 0
-    for num in nums:
-        temp_rob = no_rob_prev + num
-        temp_no_rob = max(rob_prev, no_rob_prev)
-        
-        rob_prev = temp_rob
-        no_rob_prev = temp_no_rob
-    return max(rob_prev, no_rob_prev)
+    python: `def rob_linear(nums):
+    rob_prev = 0
+    no_rob_prev = 0
+    for num in nums:
+        temp_rob = no_rob_prev + num
+        temp_no_rob = max(rob_prev, no_rob_prev)
+
+        rob_prev = temp_rob
+        no_rob_prev = temp_no_rob
+    return max(rob_prev, no_rob_prev)
+
 
 def rob_circular(nums):
-    n = len(nums)
-    if n == 0:
-        return 0
-    if n == 1:
-        return nums[0]
-    
-    v1 = nums[:-1]
-    v2 = nums[1:]
-    
-    return max(rob_linear(v1), rob_linear(v2))
+    n = len(nums)
+    if n == 0:
+        return 0
+    if n == 1:
+        return nums[0]
+
+    v1 = nums[:-1]
+    v2 = nums[1:]
+
+    return max(rob_linear(v1), rob_linear(v2))
+
 
 if __name__ == "__main__":
-    try:
-        n = int(input())
-        if n == 0:
-            print(0)
-        else:
-            nums = list(map(int, input().split()))
-            print(rob_circular(nums))
-    except (IOError, ValueError):
-        print("Invalid input")
+    try:
+        n_str = input().strip()
+    except EOFError:
+        n_str = ""   # no input provided
+
+    if not n_str:
+        n = 0
+    else:
+        n = int(n_str)
+
+    if n > 0:
+        try:
+            nums = list(map(int, input().strip().split()))
+        except EOFError:
+            nums = []
+    else:
+        nums = []
+
+    print(rob_circular(nums))
+
 `,
     javascript: `
 // Helper function for linear House Robber (fixed)
@@ -636,64 +711,89 @@ cout << binarySearch(nums, target) << endl;
 return 0;
 }
 `,
-      java: `
-import java.util.*;
+      java: `import java.util.*;
+
 public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        try {
-            int n = Integer.parseInt(sc.nextLine());
-            String[] numStrings = sc.nextLine().split(" ");
-            if (numStrings.length != n) {
-                System.out.println("Error: Number of elements does not match the value of n.");
-                return;
-            }
-            int[] nums = new int[n];
-            for (int i = 0; i < n; i++) {
-                nums[i] = Integer.parseInt(numStrings[i]);
-            }
-            String targetStr = sc.nextLine();
-            int target = Integer.parseInt(targetStr);
-            int left = 0, right = n - 1;
-            int result = -1;
-            while (left <= right) {
-                int mid = left + (right - left) / 2;
-                if (nums[mid] == target) {
-                    result = mid;
-                    break;
-                } else if (nums[mid] < target) {
-                    left = mid + 1;
-                } else {
-                    right = mid - 1;
-                }
-            }
-            System.out.println(result);
-        } catch (NumberFormatException e) {
-            System.out.println("Invalid input. Please enter integers only.");
-        }
-    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        if (!sc.hasNextInt()) {
+            System.out.println("Error: Missing n");
+            return;
+        }
+        int n = sc.nextInt();
+
+        int[] nums = new int[n];
+        for (int i = 0; i < n; i++) {
+            if (!sc.hasNextInt()) {
+                System.out.println("Error: Missing array elements");
+                return;
+            }
+            nums[i] = sc.nextInt();
+        }
+
+        if (!sc.hasNextInt()) {
+            System.out.println("Error: Missing target");
+            return;
+        }
+        int target = sc.nextInt();
+
+        int left = 0, right = n - 1;
+        int result = -1;
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] == target) {
+                result = mid;
+                break;
+            } else if (nums[mid] < target) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+
+        System.out.println(result);
+    }
 }
+
 `,
       python: `
 try:
-    n = int(input())
-    nums = list(map(int, input().split()))
-    target_input = input()
-    target = int(target_input);
-    left, right = 0, n - 1
-    result = -1
-    while left <= right:
-        mid = (left + right) // 2
-        if nums[mid] == target:
-            result = mid
-            break
-        elif nums[mid] < target:
-            left = mid + 1
-        else:
-            right = mid - 1
-    print(result)
-except ValueError:
-    print("Invalid input. Please enter integers only.")
+    n = int(input())                 # size of array
+    nums = list(map(int, input().split()))  
+    target = int(input())            # target element
+
+    left, right = 0, n - 1
+    result = -1
+
+    while left <= right:
+        mid = (left + right) // 2
+        if nums[mid] == target:
+            result = mid
+            break
+        elif nums[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+
+    print(result)
+
+except Exception as e:
+    print("Error:", e)
+
+
+
+
+
+
+
+
+
+
+
+
+
 `,
       javascript: `
 const readline = require('readline');
@@ -766,7 +866,8 @@ int main() {
 
 
 `,
-      java: `import java.util.*;
+      java: ` 
+import java.util.*;
 
 public class Main {
     public static int subarraySum(int[] nums, int k) {
@@ -784,32 +885,19 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         try {
-            String nLine = sc.nextLine().trim();
-            int n = Integer.parseInt(nLine);
-
-            String numsLine = sc.nextLine().trim();
-            String[] numsStr = numsLine.split("\\s+");
-            if (numsStr.length != n) {
-                System.out.println("Error: Number of elements does not match the value of n.");
-                return;
-            }
+            int n = sc.nextInt();
             int[] nums = new int[n];
             for (int i = 0; i < n; i++) {
-                nums[i] = Integer.parseInt(numsStr[i].replaceAll("[^0-9\\-]", ""));
+                nums[i] = sc.nextInt();
             }
-
-            String kLine = sc.nextLine().trim();
-            int k = Integer.parseInt(kLine);
-
+            int k = sc.nextInt();
             System.out.println(subarraySum(nums, k));
-        } catch (NumberFormatException e) {
+        } catch (Exception e) {
             System.out.println("Invalid input. Please enter integers only.");
         }
         sc.close();
     }
 }
-
-
 
  
 `,
@@ -823,30 +911,48 @@ public class Main {
         freq[curr_sum] = freq.get(curr_sum, 0) + 1
     return count
 
+
 try:
-    n_line = input().strip()
+    # Read n
+    try:
+        n_line = input().strip()
+    except EOFError:
+        n_line = ""
+    if not n_line:
+        print(0)
+        exit()
+
     n = int(n_line)
-    nums_line = input().strip()
+
+    # Read nums
+    try:
+        nums_line = input().strip()
+    except EOFError:
+        nums_line = ""
+    if not nums_line:
+        print(0)
+        exit()
+
     nums = list(map(int, nums_line.split()))
     if len(nums) != n:
         print("Error: Number of elements does not match the value of n.")
-    else:
+        exit()
+
+    # Read k
+    try:
         k_line = input().strip()
-        k = int(k_line)
-        print(subarray_sum(nums, k))
+    except EOFError:
+        k_line = ""
+    if not k_line:
+        print(0)
+        exit()
+
+    k = int(k_line)
+
+    print(subarray_sum(nums, k))
+
 except ValueError:
     print("Invalid input. Please enter integers only.")
-
-
-
- 
-
-
-
-
-
-
-
 
 `,
       javascript: `const readline = require('readline');

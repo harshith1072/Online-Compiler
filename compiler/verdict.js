@@ -69,17 +69,11 @@ const verdict = async (problemId, executeCode, isRun = false) => {
       problemId = 0;
     }
 
-<<<<<<< HEAD
-    // Correct the URL to point to the deployed backend server's testcases endpoint
-    // The '/byProblem' route is the correct one for fetching all test cases for a problem
-    const response = await axios.get(
-      `https://codejudge-lfe8.onrender.com/byProblem/${problemId}`
-    );
-=======
+
     const response = await axios.get(
       `http://localhost:9000/byProblem/${problemId-1}`
     );
->>>>>>> 472ed62
+    
 
     let testCases = response.data;
     if (isRun) testCases = testCases.slice(0, 2);

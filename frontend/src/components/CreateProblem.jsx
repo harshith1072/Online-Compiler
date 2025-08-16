@@ -1,4 +1,6 @@
-//  import React, { useState, useEffect } from 'react';
+ 
+
+// import React, { useState, useEffect } from 'react';
 // import { useNavigate } from 'react-router-dom';
 // import { PlusCircle, Save, ArrowLeft, Tags } from 'lucide-react';
 
@@ -7,8 +9,8 @@
 //         _id: '',
 //         title: '',
 //         description: '',
-//         difficulty: 'easy',
-//         tags: [''] // Initialize with one empty tag
+//         difficulty: '',
+//         tags: ['']
 //     });
 //     const [message, setMessage] = useState('');
 //     const navigate = useNavigate();
@@ -42,7 +44,6 @@
 //         e.preventDefault();
 //         setMessage('');
 
-//         // Remove empty tags before submitting
 //         const problemWithCleanedTags = {
 //             ...problem,
 //             tags: problem.tags.filter(tag => tag.trim() !== '')
@@ -61,12 +62,11 @@
 
 //             if (response.ok) {
 //                 setMessage('Problem created successfully!');
-//                 // Clear the form
 //                 setProblem({
 //                     _id: '',
 //                     title: '',
 //                     description: '',
-//                     difficulty: 'Easy',
+//                     difficulty: '',
 //                     tags: [''],
 //                 });
 //             } else {
@@ -83,7 +83,6 @@
 //     };
 
 //     const handleAddTestCases = () => {
-//         // Navigate to the test case creation page, passing the problem ID
 //         navigate(`/admin/create-testcase/${problem._id}`);
 //     };
     
@@ -147,11 +146,13 @@
 //                             name="difficulty"
 //                             value={problem.difficulty}
 //                             onChange={handleChange}
+//                             required
 //                             className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500 text-gray-800"
 //                         >
-//                             <option value="Easy">Easy</option>
-//                             <option value="Medium">Medium</option>
-//                             <option value="Hard">Hard</option>
+//                             <option value="" disabled>Select Difficulty</option>
+//                             <option value="easy">Easy</option>
+//                             <option value="medium">Medium</option>
+//                             <option value="hard">Hard</option>
 //                         </select>
 //                     </div>
 //                     <div>
@@ -211,7 +212,7 @@
 // export default CreateProblem;
 
 
-
+const BASE_URL = "http://localhost:9000";
 
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -263,7 +264,7 @@ const CreateProblem = () => {
         };
         
         try {
-            const response = await fetch('http://localhost:9000/problems', {
+            const response = await fetch(`${BASE_URL}/problems`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

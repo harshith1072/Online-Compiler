@@ -1,3 +1,5 @@
+
+const BASE_URL = "http://localhost:9000";
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, PlusCircle, Save } from 'lucide-react';
@@ -23,7 +25,7 @@ const EditProblem = () => {
 
         const fetchProblem = async () => {
             try {
-                const response = await fetch(`http://localhost:9000/problems/${id}`);
+                const response = await fetch(`${BASE_URL}/${id}`);
                 if (!response.ok) {
                     const text = await response.text();
                     throw new Error(`Failed to fetch problem data. Server responded with: ${text}`);

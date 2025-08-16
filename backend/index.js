@@ -1,7 +1,3 @@
-<<<<<<< HEAD
- 
-=======
->>>>>>> 472ed62
 if (process.env.NODE_ENV !== "production") {
     require("dotenv").config();
 }
@@ -35,18 +31,9 @@ connectToMongo();
 // --- Middleware (Correct Order) ---
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-<<<<<<< HEAD
-app.use(express.json()); // ✅ Correct order: Body parsers first
-app.use(cookieParser()); // ✅ Cookie parser next
-app.use(cors({
-  origin: ["http://localhost:5173", "https://online-compiler-076b.onrender.com"],
-  credentials: true
-}));// ✅ CORS last, before routes
-=======
 app.use(express.json()); 
 app.use(cookieParser());
 app.use(cors({ origin: "http://localhost:5173", credentials: true })); 
->>>>>>> 472ed62
 
 // ---------- USER ROUTES ----------
 app.post("/signup", validateSignup, userController.signup);
