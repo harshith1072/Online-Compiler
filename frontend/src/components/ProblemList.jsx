@@ -42,7 +42,7 @@ const ProblemList = () => {
                         <h1>Problems List</h1>
                     </div>
                     <div className="list-buttons">
-                        <Link to="/submissions" className="list-button">View Submissions</Link>
+                        {/* <Link to="/submissions" className="list-button">View Submissions</Link> */}
                         <button onClick={handleLogout} className="list-button logout-button">Logout</button>
                     </div>
                 </div>

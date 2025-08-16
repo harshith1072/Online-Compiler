@@ -54,9 +54,10 @@ const FetchSingleProblem = () => {
     }
 
     return (
-        <div className="flex flex-col lg:flex-row min-h-screen bg-gray-50 text-gray-800 font-sans p-4">
-            <div className="lg:w-1/2 p-6 bg-white rounded-xl shadow-lg m-2 border border-gray-200 overflow-y-auto">
-                <div className="Question">
+        <div className="flex flex-col lg:flex-row min-h-screen bg-gray-50 text-gray-800 font-sans p-4 space-y-4 lg:space-y-0 lg:space-x-4">
+            {/* Left Panel: Problem Statement */}
+            <div className="w-full lg:w-1/2 p-6 bg-white rounded-xl shadow-lg border border-gray-200 overflow-y-auto">
+                <div className="prose max-w-none">
                     <h1 className="text-3xl font-extrabold text-blue-600 mb-4">{problem.title}</h1>
                     <div className="text-gray-700 leading-relaxed space-y-4">
                         <ReactMarkdown>{problem.description}</ReactMarkdown>
@@ -69,11 +70,11 @@ const FetchSingleProblem = () => {
                                         <h4 className="font-semibold text-lg text-blue-700">Test Case {index + 1}</h4>
                                         <div className="mt-2">
                                             <p className="font-medium text-gray-800">Input:</p>
-                                            <pre className="bg-gray-100 p-3 rounded-md text-sm text-gray-700 overflow-x-auto">{testCase.input}</pre>
+                                            <pre className="bg-gray-100 p-3 rounded-md text-sm text-gray-700 overflow-x-auto whitespace-pre-wrap">{testCase.input}</pre>
                                         </div>
                                         <div className="mt-2">
                                             <p className="font-medium text-gray-800">Expected Output:</p>
-                                            <pre className="bg-gray-100 p-3 rounded-md text-sm text-gray-700 overflow-x-auto">{testCase.expected_output}</pre>
+                                            <pre className="bg-gray-100 p-3 rounded-md text-sm text-gray-700 overflow-x-auto whitespace-pre-wrap">{testCase.expected_output}</pre>
                                         </div>
                                     </div>
                                 ))
@@ -84,7 +85,8 @@ const FetchSingleProblem = () => {
                     </div>
                 </div>
             </div>
-            <div className="lg:w-1/2 p-6 m-2 bg-white rounded-xl shadow-lg border border-gray-200">
+            {/* Right Panel: Code Editor and Outputs */}
+            <div className="w-full lg:w-1/2 p-6 bg-white rounded-xl shadow-lg border border-gray-200">
                 <Editor />
             </div>
         </div>

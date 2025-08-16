@@ -1,6 +1,3 @@
-fetchsingle.css
-
- 
 body {
   margin: 0;
   padding: 0;
@@ -35,7 +32,7 @@ body {
   margin-bottom: 20px;
 }
 
-/* Optional: if you use h2/h3 inside question section */
+/* Headings inside question section */
 .question-section h2,
 .question-section h3 {
   font-weight: 600;
@@ -49,25 +46,35 @@ body {
   line-height: 1.6;
 }
 
-/* Right panel: Editor section (unchanged layout) */
+/* Right panel: Editor + Results + Custom Testcases */
 .editor-section {
   display: flex;
   flex-direction: column;
+  gap: 1.5rem;
   padding: 20px;
   min-width: 50%;
   max-width: 50%;
-  max-height: 100%;
-  margin-top: 1rem;
   overflow-y: auto;
   background-color: #fdfdfd;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Section box (Result + Custom Testcases wrapper) */
+.editor-section > div {
+  background-color: #fff;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 /* Result output box */
 .result-box {
-  background-color: #f1f1f1;
-  padding: 16px;
+  background-color: #f9fafb;
+  padding: 12px;
   border-radius: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid #d1d5db;
   white-space: pre-wrap;
   font-family: monospace;
   font-size: 14px;
@@ -76,7 +83,18 @@ body {
   overflow-y: auto;
 }
 
-/* Scrollbars for both panels and output */
+/* Custom testcases textarea */
+.editor-section textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: monospace;
+  resize: vertical;
+}
+
+/* Scrollbars */
 .question-section::-webkit-scrollbar,
 .editor-section::-webkit-scrollbar,
 .result-box::-webkit-scrollbar {
@@ -94,4 +112,19 @@ body {
 .editor-section::-webkit-scrollbar-thumb:hover,
 .result-box::-webkit-scrollbar-thumb:hover {
   background: #aaa;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 1024px) {
+  .editor-section {
+    min-width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .question-section {
+    height: auto;
+    border-right: none;
+    border-bottom: 3px solid #ddd;
+  }
 }
