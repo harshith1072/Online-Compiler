@@ -3,8 +3,8 @@ const { body, param, validationResult } = require("express-validator");
 const validateSignup = [
   body("email").isEmail().withMessage("Enter a valid email"),
   body("password")
-    .isLength({ min: 6 })
-    .withMessage("Password must be at least 6 characters"),
+    .isLength({ min: 1 }) // Changed minimum password length to 1
+    .withMessage("Password must be at least 1 character"),
   (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
