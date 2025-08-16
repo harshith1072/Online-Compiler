@@ -101,7 +101,7 @@ import AdminDashboard from "./components/AdminDashboard"; // Import the new Admi
 import CreateProblem  from "./components/CreateProblem";
 import CreateTestcase  from "./components/CreateTestcase";
 
-import './Styles/App.css';
+import './styles/App.css';
 
 const App = () => {
     return (
