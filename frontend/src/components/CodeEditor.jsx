@@ -1,10 +1,12 @@
- 
 import React, { useState, useEffect } from 'react';
+
 import toast, { Toaster } from 'react-hot-toast';
 import { Play, Bot, Code } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 
 function App() {
+    const COMPILER_URL = "https://online-compiler-076b.onrender.com";
+
     const boilerplates = {
         cpp: `#include <iostream>
 using namespace std;
@@ -36,11 +38,10 @@ public class Main {
 }`,
         py: `a, b = map(int, input().split())
 print(a + b)`,
-       javascript: `const fs = require('fs');
+        javascript: `const fs = require('fs');
 const input = fs.readFileSync(0, 'utf8').trim().split(' ').map(Number);
 const [a, b] = input;
 console.log(a + b);`
-
     };
 
     const [code, setCode] = useState(boilerplates['cpp']);
@@ -69,17 +70,11 @@ console.log(a + b);`
         const payload = { language, code, input };
 
         try {
-            // const response = await fetch(import.meta.env.VITE_BACKEND_URL, {
-            //     method: 'POST',
-            //     headers: { 'Content-Type': 'application/json' },
-            //     body: JSON.stringify(payload)
-            // });
-            const response = await fetch("https://online-compiler-076b.onrender.com/run1", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
-});
-
+            const response = await fetch(`${COMPILER_URL}/run1`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
 
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
@@ -108,7 +103,7 @@ console.log(a + b);`
         try {
             const payload = { code };
 
-            const response = await fetch(import.meta.env.VITE_GEMINI_API_URL, {
+            const response = await fetch(`${COMPILER_URL}/ai-review`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
@@ -134,10 +129,10 @@ console.log(a + b);`
             <Toaster />
             <div className="max-w-7xl mx-auto">
                 <h1 className="text-4xl font-extrabold text-center text-blue-600 mb-8">CodeJudge Compiler</h1>
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div className="flex flex-col lg:flex-row gap-6">
 
                     {/* Left Column */}
-                    <div className="lg:col-span-2 flex flex-col bg-gray-800 shadow-xl rounded-xl overflow-hidden border border-gray-700">
+                    <div className="lg:w-2/3 flex flex-col bg-gray-800 shadow-xl rounded-xl overflow-hidden border border-gray-700">
                         <div className="flex justify-between items-center bg-gray-950 p-3 shadow-md">
                             <div className="flex items-center space-x-2">
                                 <Code size={20} className="text-blue-400" />
@@ -151,7 +146,7 @@ console.log(a + b);`
                                 <option value="cpp">C++</option>
                                 <option value="c">C</option>
                                 <option value="java">Java</option>
-                                <option value="python">Python</option>
+                                <option value="py">Python</option>
                                 <option value="javascript">JavaScript</option>
                             </select>
                         </div>
@@ -159,20 +154,15 @@ console.log(a + b);`
                             <textarea
                                 value={code}
                                 onChange={(e) => setCode(e.target.value)}
-                                className="w-full h-[600px] p-4 text-sm font-mono border-none bg-gray-800 text-gray-200 resize-none focus:outline-none"
-                                style={{
-                                    fontFamily: '"Fira code", "Fira Mono", monospace',
-                                    lineHeight: '1.5',
-                                    tabSize: 4
-                                }}
+                                className="w-full h-[60vh] p-4 text-sm font-mono border-none bg-gray-800 text-gray-200 resize-none focus:outline-none"
                             />
                         </div>
                     </div>
 
                     {/* Right Column */}
-                    <div className="lg:col-span-1 flex flex-col gap-6">
+                    <div className="lg:w-1/3 flex flex-col gap-6">
                         {/* Buttons */}
-                        <div className="flex gap-4">
+                        <div className="flex flex-col sm:flex-row gap-4">
                             <button
                                 onClick={handleRun}
                                 disabled={isLoading}
@@ -198,14 +188,14 @@ console.log(a + b);`
                                 value={input}
                                 onChange={(e) => setInput(e.target.value)}
                                 placeholder="Enter input values here..."
-                                className="w-full h-32 p-3 text-sm border border-gray-300 rounded-lg bg-gray-100 text-gray-800 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
+                                className="w-full min-h-[100px] p-3 text-sm border border-gray-300 rounded-lg bg-gray-100 text-gray-800 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
                             />
                         </div>
 
                         {/* Output */}
                         <div className="bg-white shadow-xl rounded-xl p-4 flex flex-col flex-grow border border-gray-200">
                             <h2 className="text-lg font-semibold text-gray-800 mb-2">Output</h2>
-                            <div className="w-full h-full p-3 text-sm border border-gray-300 rounded-lg bg-gray-100 text-gray-800 overflow-y-auto font-mono whitespace-pre-wrap">
+                            <div className="w-full min-h-[100px] p-3 text-sm border border-gray-300 rounded-lg bg-gray-100 text-gray-800 overflow-y-auto font-mono whitespace-pre-wrap">
                                 {isLoading && output === 'Executing code...' ? (
                                     <div className="text-center text-blue-600">Loading...</div>
                                 ) : (
@@ -217,7 +207,7 @@ console.log(a + b);`
                         {/* AI Review */}
                         <div className="bg-white shadow-xl rounded-xl p-4 flex flex-col flex-grow border border-gray-200">
                             <h2 className="text-lg font-semibold text-gray-800 mb-2">AI Review</h2>
-                            <div className="prose prose-sm w-full h-full p-3 text-sm border border-gray-300 rounded-lg bg-gray-100 text-gray-800 overflow-y-auto">
+                            <div className="prose prose-sm w-full min-h-[100px] p-3 text-sm border border-gray-300 rounded-lg bg-gray-100 text-gray-800 overflow-y-auto">
                                 {aiReview === 'Thinking...' ? (
                                     <div className="text-center text-green-600">Thinking...</div>
                                 ) : (

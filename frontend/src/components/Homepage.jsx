@@ -1,5 +1,7 @@
  
 
+
+
 // import React, { useState, useEffect, useRef } from 'react';
 // import { getAuth, signInWithCustomToken, signInAnonymously } from 'firebase/auth';
 // import { initializeApp } from 'firebase/app';
@@ -8,8 +10,8 @@
 // import { Link } from 'react-router-dom';
 // // Lucide-react icons for a clean, modern look
 // import { Terminal, Code, Cpu, ShieldCheck, Stars, Menu, X } from 'lucide-react';
- 
-// const  Homepage = () => {
+
+// const Homepage = () => {
 //     // State for mobile menu visibility
 //     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -66,8 +68,10 @@
 
 //                     {/* Desktop Navigation */}
 //                     <div className="hidden md:flex space-x-6 items-center">
-//                         <Link to="/signup" className="text-gray-600 hover:text-gray-900 transition-colors duration-200">Problems</Link>
+//                         <Link to="/problems" className="text-gray-600 hover:text-gray-900 transition-colors duration-200">Problems</Link>
 //                         <Link to="/codeEditor" className="text-gray-600 hover:text-gray-900 transition-colors duration-200">Compiler</Link>
+//                         {/* New Admin Login link */}
+//                         <Link to="/admin-login" className="text-gray-600 hover:text-gray-900 transition-colors duration-200">Admin Login</Link>
 //                         <Link to="/login" className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-5 rounded-lg shadow-md transition-all duration-300">Login</Link>
 //                         <Link to="/signup" className="border border-blue-600 text-blue-600 font-medium py-2 px-5 rounded-lg hover:bg-blue-600 hover:text-white transition-all duration-300">Register</Link>
 //                     </div>
@@ -85,6 +89,8 @@
 //                     <div className="flex flex-col space-y-4 text-center">
 //                         <Link to="/problems" className="block py-2 text-gray-600 hover:text-gray-900 transition-colors duration-200">Problems</Link>
 //                         <Link to="/compiler" className="block py-2 text-gray-600 hover:text-gray-900 transition-colors duration-200">Compiler</Link>
+//                         {/* New Admin Login link in mobile menu */}
+//                         <Link to="/admin-login" className="block py-2 text-gray-600 hover:text-gray-900 transition-colors duration-200">Admin Login</Link>
 //                         <Link to="/login" className="block bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-5 rounded-lg shadow-md transition-all duration-300">Login</Link>
 //                         <Link to="/register" className="block border border-blue-600 text-blue-600 font-medium py-2 px-5 rounded-lg hover:bg-blue-600 hover:text-white transition-all duration-300">Register</Link>
 //                     </div>
@@ -174,16 +180,13 @@
 //                 </section>
 //             </main>
 
-//     <Footer />
-          
+//             <Footer />
+            
 //         </div>
 //     );
 // };
 
 // export default Homepage;
-
-
-
 
 
 
@@ -207,7 +210,6 @@ const Homepage = () => {
     // Initialize Firebase and handle authentication
     useEffect(() => {
         const initializeFirebase = async () => {
-            // Retrieve Firebase config and app ID from the global scope
             const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
             const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
             const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
@@ -218,7 +220,6 @@ const Homepage = () => {
                     auth.current = getAuth(app);
                     db.current = getFirestore(app);
 
-                    // Sign in with the provided custom token or anonymously
                     if (initialAuthToken) {
                         await signInWithCustomToken(auth.current, initialAuthToken);
                         console.log("Signed in with custom token.");
@@ -253,9 +254,7 @@ const Homepage = () => {
 
                     {/* Desktop Navigation */}
                     <div className="hidden md:flex space-x-6 items-center">
-                        {/* <Link to="/problems" className="text-gray-600 hover:text-gray-900 transition-colors duration-200">Problems</Link> */}
                         <Link to="/codeEditor" className="text-gray-600 hover:text-gray-900 transition-colors duration-200">Compiler</Link>
-                        {/* New Admin Login link */}
                         <Link to="/admin-login" className="text-gray-600 hover:text-gray-900 transition-colors duration-200">Admin Login</Link>
                         <Link to="/login" className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-5 rounded-lg shadow-md transition-all duration-300">Login</Link>
                         <Link to="/signup" className="border border-blue-600 text-blue-600 font-medium py-2 px-5 rounded-lg hover:bg-blue-600 hover:text-white transition-all duration-300">Register</Link>
@@ -272,9 +271,7 @@ const Homepage = () => {
                 {/* Mobile Menu */}
                 <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'} bg-white p-4 transition-all duration-300 ease-in-out`}>
                     <div className="flex flex-col space-y-4 text-center">
-                        <Link to="/problems" className="block py-2 text-gray-600 hover:text-gray-900 transition-colors duration-200">Problems</Link>
                         <Link to="/compiler" className="block py-2 text-gray-600 hover:text-gray-900 transition-colors duration-200">Compiler</Link>
-                        {/* New Admin Login link in mobile menu */}
                         <Link to="/admin-login" className="block py-2 text-gray-600 hover:text-gray-900 transition-colors duration-200">Admin Login</Link>
                         <Link to="/login" className="block bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-5 rounded-lg shadow-md transition-all duration-300">Login</Link>
                         <Link to="/register" className="block border border-blue-600 text-blue-600 font-medium py-2 px-5 rounded-lg hover:bg-blue-600 hover:text-white transition-all duration-300">Register</Link>
@@ -306,9 +303,6 @@ const Homepage = () => {
                         <div className="flex justify-center space-x-4">
                             <Link to="/signup" className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300">
                                 Start Your Journey
-                            </Link>
-                            <Link to="/signup" className="border border-gray-300 text-gray-600 font-bold py-3 px-8 rounded-full hover:bg-gray-200 transform hover:scale-105 transition-all duration-300">
-                                Explore Problems
                             </Link>
                         </div>
                     </div>
@@ -366,7 +360,6 @@ const Homepage = () => {
             </main>
 
             <Footer />
-            
         </div>
     );
 };

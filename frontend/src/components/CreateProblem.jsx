@@ -1,4 +1,4 @@
- 
+
 const BASE_URL = "https://codejudge-lfe8.onrender.com";
 
 import React, { useState, useEffect } from 'react';
@@ -51,7 +51,7 @@ const CreateProblem = () => {
         };
         
         try {
-            const response = await fetch(`https://codejudge-lfe8.onrender.com/problems`, {
+            const response = await fetch(`${BASE_URL}/problems`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -88,16 +88,19 @@ const CreateProblem = () => {
     };
     
     return (
-        <div className="min-h-screen bg-gray-100 p-8 font-sans text-gray-800">
-            <header className="flex items-center bg-white p-6 rounded-t-xl shadow-lg border-b-2 border-purple-500">
-                <button onClick={handleCancel} className="p-2 mr-3 rounded-full hover:bg-gray-100 transition-colors duration-200 text-gray-700">
+        <div className="min-h-screen bg-gray-100 p-4 sm:p-8 font-sans text-gray-800">
+            <header className="flex items-center bg-white p-4 sm:p-6 rounded-t-xl shadow-lg border-b-2 border-purple-500">
+                <button 
+                    onClick={handleCancel} 
+                    className="p-2 mr-3 rounded-full hover:bg-gray-100 transition-colors duration-200 text-gray-700"
+                >
                     <ArrowLeft size={24} />
                 </button>
-                <h1 className="text-3xl font-extrabold text-purple-600">
+                <h1 className="text-2xl sm:text-3xl font-extrabold text-purple-600">
                     Create New Problem
                 </h1>
             </header>
-            <main className="bg-white p-8 rounded-b-xl shadow-lg">
+            <main className="bg-white p-4 sm:p-8 rounded-b-xl shadow-lg">
                 {message && (
                     <div className={`p-4 mb-6 rounded-lg text-sm text-center ${message.includes('successfully') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
                         {message}
@@ -157,7 +160,7 @@ const CreateProblem = () => {
                         </select>
                     </div>
                     <div>
-                        <h3 className="text-xl font-bold text-gray-800 mb-4 border-b border-gray-300 pb-2">Tags</h3>
+                        <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-4 border-b border-gray-300 pb-2">Tags</h3>
                         <div className="space-y-2">
                             {problem.tags.map((tag, index) => (
                                 <input
@@ -180,17 +183,17 @@ const CreateProblem = () => {
                             Add Another Tag
                         </button>
                     </div>
-                    <div className="flex justify-end space-x-4 mt-8">
+                    <div className="flex flex-col sm:flex-row sm:justify-end space-y-4 sm:space-y-0 sm:space-x-4 mt-8">
                         <button
                             type="button"
                             onClick={handleCancel}
-                            className="py-3 px-8 border border-gray-300 rounded-lg text-gray-700 font-semibold hover:bg-gray-100 transition-colors duration-200"
+                            className="w-full sm:w-auto py-3 px-8 border border-gray-300 rounded-lg text-gray-700 font-semibold hover:bg-gray-100 transition-colors duration-200"
                         >
                             Cancel
                         </button>
                         <button
                             type="submit"
-                            className="py-3 px-8 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg shadow-lg transition-colors duration-200 flex items-center"
+                            className="w-full sm:w-auto py-3 px-8 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg shadow-lg transition-colors duration-200 flex items-center justify-center"
                         >
                             <Save size={20} className="mr-2" />
                             Save Problem
@@ -198,7 +201,7 @@ const CreateProblem = () => {
                         <button
                             type="button"
                             onClick={handleAddTestCases}
-                            className="py-3 px-8 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-lg transition-colors duration-200 flex items-center"
+                            className="w-full sm:w-auto py-3 px-8 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-lg transition-colors duration-200 flex items-center justify-center"
                         >
                             <PlusCircle size={20} className="mr-2" />
                             Add Test Cases
